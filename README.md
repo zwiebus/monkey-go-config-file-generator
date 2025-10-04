@@ -1,6 +1,6 @@
 # monkey-go-config-file-generator
 
-HTML GUI for creating and saving the monkey-go config file.
+HTML GUI for creating and saving the <a href="https://github.com/Tensai75/nzb-monkey-go">monkey-go</a> config file.
 
 ## Features
 <ul>
