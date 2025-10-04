@@ -1,3 +1,55 @@
+const dropdown = document.getElementById("select_target");
+  dropdown.addEventListener("change", function() {
+  const selectedValue = dropdown.value;
+  document.getElementById("pgEXECUTE").value = 'target = '+ dropdown.value +'';
+   let executed = document.getElementById("executed");
+   let sabnzbd = document.getElementById("sabnzbd");
+   let nzbget = document.getElementById("nzbget");
+   let synologydls = document.getElementById("synologydls");
+   let execute = document.getElementById("pgEXECUTE");
+     if(execute.value.includes('EXECUTE')) {
+         executed.style.display = 'block';
+         nzbget.style.display = 'none';
+         synologydls.style.display = 'none';
+         sabnzbd.style.display = 'none';
+      } else if(execute.value.includes('SABNZBD')) {
+         sabnzbd.style.display = 'block';
+         nzbget.style.display = 'none';
+         synologydls.style.display = 'none';
+         executed.style.display = 'none';
+      } else if(execute.value.includes('NZBGET')) {
+         nzbget.style.display = 'block';
+         sabnzbd.style.display = 'none';
+         synologydls.style.display = 'none';
+         executed.style.display = 'none';
+      } else if(execute.value.includes('SYNOLOGYDLS')) {
+         synologydls.style.display = 'block';
+         sabnzbd.style.display = 'none';
+         nzbget.style.display = 'none';
+         executed.style.display = 'none';
+      }
+});
+function changeValue(event) {
+   let selectElement = event.target;
+   let value = selectElement.value;
+   event.target.previousElementSibling.value = value;
+}
+function combine(event) {
+   let inputElement = event.target;
+   let value = inputElement.value;
+   let value2 = event.target.nextElementSibling.value;
+   event.target.previousElementSibling.value = value2 + value;
+}
+function nossl() {
+  let nossl = document.getElementById("pgportdir");
+   if(nossl.value.includes('119')) {
+   document.getElementById("pgssldir").value = 'ssl = false';
+   document.getElementById("ssl").value = 'ssl = false';
+   } else if(nossl.value.includes('563') || nossl.value.includes('443')) {
+   document.getElementById("pgssldir").value = 'ssl = true';
+   document.getElementById("ssl").value = 'ssl = true';
+   }
+}
 function ssltrue() {
   let ssltrue = document.getElementById("pgssldir");
    if(ssltrue.value.includes('false')) {
@@ -65,3 +117,10 @@ function changeStyle() {
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
    }
+   let element = document.querySelector('.container');
+    if (element.classList.contains('light-mode')) {
+     changeStyle.textContent = "Dunkel";
+    } else {
+     changeStyle.textContent = "Hell";
+    }
+}
