@@ -99,6 +99,9 @@ function safeConfig() {
    }
   link.click();
 }
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
 function clearConfig() {
   document.getElementById('pgconfig').innerText = '';
   document.getElementById('pg').reset();
@@ -110,6 +113,7 @@ function clearConfig() {
   nzbget.style.display = 'none';
   synologydls.style.display = 'none';
   sabnzbd.style.display = 'none';
+  scrollToTop();
 }
 function changeStyle() {
   let elements = document.querySelectorAll('body, .container , input , h1 , h2, .cat');
@@ -124,3 +128,4 @@ function changeStyle() {
      changeStyle.textContent = "Hell";
     }
 }
+
