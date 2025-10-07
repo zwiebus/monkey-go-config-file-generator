@@ -1,5 +1,6 @@
 // * @ package monkey-go-config-file-generator
 // * @ author zwiebus
+// * @ author TENSAI
 
 let template = {};
  template.type = "standard";
@@ -150,3 +151,4 @@ let template = {};
 %pgfirst_group_only%
 
 `;
+
