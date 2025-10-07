@@ -1,3 +1,6 @@
+// * @ package monkey-go-config-file-generator
+// * @ author zwiebus
+
 let template = {};
  template.type = "standard";
  template.standard = `[GENERAL]
@@ -145,4 +148,5 @@ let template = {};
 %pgskipdir%
 # Search only in the first group if several groups are provided
 %pgfirst_group_only%
+
 `;
