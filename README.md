@@ -2,9 +2,6 @@
 
 HTML GUI for creating and saving the <a href="https://github.com/Tensai75/nzb-monkey-go">nzb-monkey-go</a> config file.
 
-## Why?
-Most people should be able to edit a text file. However, errors can easily creep in in this case. These errors should be avoided, and the creation process should be made easier - especially for beginners.
-
 ## Features
 <ul>
 <li>German and English version</li>
