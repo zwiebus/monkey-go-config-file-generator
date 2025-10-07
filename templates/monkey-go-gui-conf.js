@@ -1,3 +1,6 @@
+// * @ package monkey-go-config-file-generator
+// * @ author zwiebus
+
 const dropdown = document.getElementById("select_target");
   dropdown.addEventListener("change", function() {
   const selectedValue = dropdown.value;
@@ -128,4 +131,5 @@ function changeStyle() {
      changeStyle.textContent = "Hell";
     }
 }
+
 
