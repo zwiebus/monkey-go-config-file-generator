@@ -33,6 +33,7 @@
 /* @media only screen and (max-width: 360px) {
   .large-input { width: 280px !important; }
   .medium-input { width: 160px !important; }
+   #comb { width: 100px!Important; }
 } */
 
 .light-mode {
@@ -217,3 +218,4 @@ option {
 .hrr {
   margin-right: -10px;
 }
+
