@@ -20,7 +20,6 @@
     margin-left: -10px !important;
   }
 }
-
 @media only screen and (max-width: 420px) {
   .large-input {
     width: 310px !important;
@@ -29,52 +28,40 @@
     margin-right: 5px !important;
   }
 }
-
 /* @media only screen and (max-width: 360px) {
   .large-input { width: 280px !important; }
   .medium-input { width: 160px !important; }
    #comb { width: 100px!Important; }
 } */
-
 .light-mode {
   color: #000 !important;
   background: #F5F5F5 !important;
   border-color: #000 !important;
 }
-
 .light-mode input {
   background: #fff !important;
 }
-
 .light-mode .button {
   color: #00009F !important;
   background: #D0F1F3 !important;
 }
-
 .light-mode .button:hover {
   background: #A5DAED !important;
 }
-
 .light-mode .button:active {
   background: #F2FBFA !important;
 }
-
-.light-mode h1,
-.light-mode h2,
-.light-mode .cat {
+.light-mode h1, .light-mode h2, .light-mode .cat {
   color: #00009F !important;
 }
-
 body {
   color: #F1F2FF;
   font-family: monospace, Consolas, Arial;
   background: #313239;
 }
-
 p {
   margin: 2px 0;
 }
-
 .container {
   content: "";
   display: table;
@@ -89,35 +76,29 @@ p {
   border: 1px solid #DEE1F7;
   border-radius: 6px;
 }
-
 .column {
   float: left;
   width: 50%;
 }
-
 h1 {
   font-size: 14px;
   margin: 6px;
   color: #43d1ff;
 }
-
 h2 {
   color: #43d1ff;
   font-size: 16px;
   margin-left: 20px;
   margin-top: 0;
 }
-
 .select {
   margin-left: 5px;
   padding: 0 6px;
 }
-
 #pgconfig {
   font-size: 11px;
   margin-top: 5px;
 }
-
 input {
   color: #F1F2FF;
   background: #4d555d;
@@ -126,40 +107,31 @@ input {
   border-radius: 2px;
   width: 230px;
 }
-
 input:focus {
   outline: none;
 }
-
 option {
   min-width: 40px;
 }
-
 #comb {
   border-left: none;
   border-right: none;
 }
-
 .large-input {
   width: 380px;
 }
-
 .medium-input {
   width: 280px;
 }
-
 .small-input {
   width: 165px;
 }
-
 #pgEXECUTE {
   width: 188px;
 }
-
 #pgportdir {
   width: 220px;
 }
-
 .button {
   background: #1A5779;
   color: #fff;
@@ -169,53 +141,39 @@ option {
   padding: 3px 6px;
   cursor: pointer;
 }
-
 .button:hover {
   background: #2d4f78;
   border-color: #325378;
 }
-
 .button:active {
   background: #7C37AD;
   border-color: #535a62;
 }
-
 .buttons {
   margin-top: 20px;
 }
-
 .changebg {
   float: right;
   margin-right: 20px;
   width: 50px;
   text-align: center;
 }
-
-#pgseries,
-#pgmovies,
-#pgetc,
-#pgetc2,
-#pgconnections {
+#pgseries, #pgmovies, #pgetc, #pgetc2, #pgconnections {
   margin-bottom: 5px;
 }
-
 .cat {
   color: #43d1ff;
 }
-
 .copy {
   position: relative;
   right: 10px;
   bottom: -5px;
   float: right;
 }
-
 .hrl {
   margin-left: -10px;
   margin-right: 20px;
 }
-
 .hrr {
   margin-right: -10px;
 }
-
