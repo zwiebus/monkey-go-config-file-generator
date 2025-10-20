@@ -159,6 +159,7 @@ let template = {};
 `;
 </script>
 <style>
+*, *::before, *::after {box-sizing: border-box;}
 @media only screen and (max-width:900px) {
     body {background:#454750!Important;}
     .container {border:none!Important;margin:0 5px!Important;padding:0!Important;}
@@ -166,10 +167,15 @@ let template = {};
     .hrl {margin-right:-10px!Important;}
     .hrr {margin-left:-10px!Important;}
 }
-/* @media only screen and (max-width:420px) {
-    .large-input {width:330px!Important;}
+@media only screen and (max-width:420px) {
+    .large-input {width:310px!Important;}
+    .medium-input {width:190px!Important;}
     .changebg {margin-right:5px!Important;}
-    #comb {width:!Important;}
+}
+/* @media only screen and (max-width:360px) {
+    .large-input {width:280px!Important;}
+    .medium-input {width:160px!Important;}
+    #comb {width: 100px!Important;}
 } */
 .light-mode {color:#000!Important;background:#F5F5F5!Important;border-color:#000!Important;}
 .light-mode input {background:#fff!Important;}
@@ -180,14 +186,13 @@ let template = {};
 body {color:#F1F2FF;font-family:monospace,Consolas,Arial;background:#313239}
 p {margin:2px 0;}
 .container {content: "";display: table;clear: both;font-size:13px;line-height:16px;background:#454750;width:98%;max-width:900px;margin:10px auto;padding:10px;border:1px solid #DEE1F7;border-radius:5px;}
-.column {float:left;width:50%;}
+.column {float:left;width:50%;position:relative;}
 h1 {font-size:14px;margin:6px;color:#43d1ff;}
 h2 {color:#43d1ff;font-size:16px;margin-left:20px;margin-top:0;}
-.select {margin-left:5px;padding:0 6px;}
+.select {margin-left:5px;padding:0 6px;min-width:70px;}
 #pgconfig {font-size:11px;margin-top:5px;}
-input {color:#F1F2FF;background:#4d555d;padding:0 6px;border: 1px solid #DEE1F7;border-radius:2px;width:230px;}
+input {color:#F1F2FF;background:#4d555d;padding:1px 6px;border: 1px solid #DEE1F7;border-radius:3px;width:230px;overflow-x: hidden;}
 input:focus{outline:none;}
-option {min-width:40px;}
 #comb {border-left:none;border-right:none;}
 .large-input {width:380px;}
 .medium-input {width:280px;}
@@ -203,8 +208,7 @@ option {min-width:40px;}
 .cat {color:#43d1ff;}
 .copy {position:relative;right:10px;bottom:-5px;float:right;}
 .hrl {margin-left:-10px;margin-right:20px;}
-.hrr {margin-right:-10px;}
-.minconf {display:none;}
+.hrr {margin-right:-10px;} 
 </style>
 <link type="text/css" rel="stylesheet" charset="UTF-8" href="./Monkey-Go-conf-GUI.en_files/m=el_main_css"></head>
 <body>
@@ -772,5 +776,6 @@ function changeStyle() {
 </script>
 </body>
 </html>
+
 
 
