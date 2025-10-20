@@ -1,9 +1,6 @@
 /* @package monkey-go-config-file-generator
  * @author zwiebus */
 
-*, *::before, *::after {
-box-sizing: border-box;
-}
 @media only screen and (max-width: 900px) {
   body {
     background: #454750 !important;
@@ -178,3 +175,4 @@ input:focus {
 .hrr {
   margin-right: -10px;
 }
+
