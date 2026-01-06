@@ -1,5 +1,6 @@
 <!--
  * @package monkey-go-config-file-generator
+ * @author TENSAI
  * @author zwiebus
 -->
 <!doctype html>
@@ -168,7 +169,6 @@ let template = {};
 }
 @media only screen and (max-width:420px) {
     .large-input {width:310px!Important;}
-    .medium-input {width:190px!Important;}
     .changebg {margin-right:5px!Important;}
 }
 /* @media only screen and (max-width:360px) {
@@ -191,8 +191,8 @@ h2 {color:#43d1ff;font-size:16px;margin-left:20px;margin-top:0;}
 .select {margin-left:5px;padding:0 6px;min-width:70px;}
 #pgconfig {font-size:11px;margin-top:5px;}
 input {color:#F1F2FF;background:#4d555d;padding:1px 6px;border: 1px solid #DEE1F7;border-radius:3px;width:230px;overflow-x: hidden;}
-input:focus{outline:none;}
-#comb {border-left:none;border-right:none;}
+input:focus{outline:none;border-color:#43d1ff;border-radius:0;}
+#comb {border-left:none;border-right:none;border-radius:0;}
 .large-input {width:380px;}
 .medium-input {width:280px;}
 .small-input {width:165px;}
@@ -214,11 +214,11 @@ input:focus{outline:none;}
 <div class="container">
 <span class="changebg button" id="changestyle" onclick="changeStyle()">Hell</span>
 <h2>Monkey-Go Config-Datei erstellen</h2>
-<span>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. F&uuml;r eine m&ouml;glichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten w&auml;hle die f&uuml;r dein Setup ben&ouml;tigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anf&uuml;hrungszeichen m&uuml;ssen die Angaben immer zwischen diese eingef&uuml;gt werden "|".</span>
+<span>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. Für eine möglichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten wähle die für dein Setup benötigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anführungszeichen müssen die Angaben immer zwischen diese eingefügt werden "|".</span>
 <form id="pg" name="pg">
 <div class="column">
 <h1>GENERAL</h1>
-  <p>W&auml;hle ein Ziel f&uuml;r die Verarbeitung von NZB-Dateien</p>
+  <p>Wähle ein Ziel für die Verarbeitung von NZB-Dateien</p>
   <div class="pgStandard">
    <input type="text" id ="pgEXECUTE" name="pgEXECUTE" value="target = &quot;EXECUTE&quot;" readonly/>
      <select class="select" id="select_target">
@@ -229,7 +229,7 @@ input:focus{outline:none;}
      </select>
    </div>
   <hr class="hrl" size="1" noshade>
-<p>Lass den Monkey eine Kategorie ausw&auml;hlen.</p>
+<p>Lass den Monkey eine Kategorie auswählen.</p>
 <p>Weitere Einstellungen dazu findest du unter <span class="cat">KATEGORISIERER</span></p>
   <div class="pgStandard">
    <input type="text" id ="pgcategorize" name="pgcategorize" value="categorize = &quot;off&quot;" readonly/>
@@ -240,7 +240,7 @@ input:focus{outline:none;}
      </select>
    </div>
   <hr class="hrl" size="1" noshade>
-<p>Sekunden, die vor dem Beenden/Schlie&szlig;en des Fensters<br>nach erfolgreichem Abschluss gewartet werden sollen</p>
+<p>Sekunden, die vor dem Beenden/Schließen des Fensters<br>nach erfolgreichem Abschluss gewartet werden sollen</p>
   <div class="pgStandard">
    <input type="text" id ="pgsuccess_wait_time" name="pgsuccess_wait_time" value="success_wait_time = 3" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -251,7 +251,7 @@ input:focus{outline:none;}
      </select>
    </div>
   <hr class="hrl" size="1" noshade>
-<p>Sekunden, die vor dem Beenden/Schlie&szlig;en des Fensters<br>nach einem Fehler gewartet werden sollen</p>
+<p>Sekunden, die vor dem Beenden/Schließen des Fensters<br>nach einem Fehler gewartet werden sollen</p>
   <div class="pgStandard">
    <input type="text" id ="pgerror_wait_time" name="pgerror_wait_time" value="error_wait_time = 10" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -290,9 +290,9 @@ input:focus{outline:none;}
 <hr class="hrl" size="1" noshade>
 <p>Pfad zum Speichern von NZB-Dateien <font color="#FF0000">&#9733;</font></p>
 <p>Entweder ein absoluter Pfad oder ein relativer Pfad zum<br>Home- oder beliebigen Verzeichnis des Benutzers</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgnzbsavepath" name="pgnzbsavepath" value="nzbsavepath = &quot;C:\User\nzb&quot;" readonly/><input class="medium-input" id="comb" value="&quot;C:\User\nzb&quot;" style="margin-left:-302px;" oninput="combine(event);" /><input type="text" value="nzbsavepath = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgnzbsavepath" name="pgnzbsavepath" value="nzbsavepath = &quot;C:\User\nzb&quot;" readonly/><input class="medium-input" id="comb" value="&quot;C:\User\nzb&quot;" style="margin-left:-302px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="nzbsavepath = " hidden/></div>
 <hr class="hrl" size="1" noshade>
-<p>Standardprogramm f&uuml;r NZB-Dateien nicht ausf&uuml;hren</p>
+<p>Standardprogramm für NZB-Dateien nicht ausführen</p>
 <div class="pgStandard"><input type="text" id="pgdontexecute" name="pgdontexecute" value="dontexecute = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="dontexecute = true">true</option>
@@ -300,7 +300,7 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrl" size="1" noshade>
-<p>Alte NZB-Dateien aus nzbsavepath l&ouml;schen</p>
+<p>Alte NZB-Dateien aus nzbsavepath löschen</p>
 <div class="pgStandard"><input type="text" id="pgclean_up_enable" name="pgclean_up_enable" value="clean_up_enable = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="clean_up_enable = false">false</option>
@@ -308,7 +308,7 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrl" size="1" noshade>
-<p>NZB-Dateien, die &auml;lter als x Tage sind, werden gel&ouml;scht</p>
+<p>NZB-Dateien, die älter als x Tage sind, werden gelöscht</p>
 <div class="pgStandard"><input type="text" id="pgclean_up_max_age" name="pgclean_up_max_age" value="clean_up_max_age = 2" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="clean_up_max_age = 2"> 2 </option>
@@ -320,7 +320,7 @@ input:focus{outline:none;}
 <div id="sabnzbd" style="display:none;">
 <h1>SABNZBD</h1>
 <p>SABnzbd-Hostname</p>
-<div class="pgStandard"><input type="text" id="pghost" name="pghost" value="host = &quot;localhost&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="host = " hidden/></div>
+<div class="pgStandard"><input type="text" id="pghost" name="pghost" value="host = &quot;localhost&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="host = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>SABnzbd-Port</p>
 <div class="pgStandard"><input type="text" id="pgport" name="pgport" value="port = 8080" readonly/><input class="small-input" type="text" id="comb" value="8080" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="port = " hidden/></div>
@@ -332,7 +332,7 @@ input:focus{outline:none;}
       <option value="ssl = true">true</option>
      </select></div>
 <hr class="hrl" size="1" noshade>
-<p>SSL-Sicherheitspr&uuml;fungen &uuml;berspringen<br>(z. B. f&uuml;r selbstsignierte Zertifikate)</p>
+<p>SSL-Sicherheitsprüfungen überspringen<br>(z. B. für selbstsignierte Zertifikate)</p>
 <div class="pgStandard"><input type="text" id="pgskip_check" name="pgskip_check" value="skip_check = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_check = false">false</option>
@@ -340,22 +340,22 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrl" size="1" noshade>
-<p>NZB-Schl&uuml;ssel. Zu finden unter Einstellungen/Allgemein/Sicherheit. Die NZB wird direkt an SABNZBD &uuml;bergeben</p>
-<div class="pgStandard"><input class="large-input" type="text" class="large-input" id="pgnzbkey" name="pgnzbkey" value="nzbkey = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-335px;" oninput="combine(event);"/><input type="text" value="nzbkey = " hidden/></div>
+<p>NZB-Schlüssel. Zu finden unter Einstellungen/Allgemein/Sicherheit. Die NZB wird direkt an SABNZBD übergeben</p>
+<div class="pgStandard"><input class="large-input" type="text" class="large-input" id="pgnzbkey" name="pgnzbkey" value="nzbkey = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-335px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="nzbkey = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basic Auth Benutzername </p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgbasicauth_username" name="pgbasicauth_username" value="basicauth_username = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-256px;" oninput="combine(event);"/><input type="text" value="basicauth_username = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgbasicauth_username" name="pgbasicauth_username" value="basicauth_username = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-256px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="basicauth_username = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basic Auth Passwort</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgbasicauth_password" name="pgbasicauth_password" value="basicauth_password = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-257px;" oninput="combine(event);"/><input type="text" value="basicauth_password = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgbasicauth_password" name="pgbasicauth_password" value="basicauth_password = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-257px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="basicauth_password = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basepath</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgbasepath" name="pgbasepath" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);"/><input type="text" value="basepath = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgbasepath" name="pgbasepath" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="basepath = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Kategorie</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgcategory" name="pgcategory" value="category = &quot;&quot;" readonly/><input class="medium-input"t id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);"/><input type="text" value="category = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgcategory" name="pgcategory" value="category = &quot;&quot;" readonly/><input class="medium-input"t id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="category = " hidden/></div>
 <hr class="hrl" size="1" noshade>
-<p>NZB pausiert zur Warteschlange hinzuf&uuml;gen</p>
+<p>NZB pausiert zur Warteschlange hinzufügen</p>
 <div class="pgStandard"><input type="text" id="pgaddpaused" name="pgaddpaused" value="addpaused = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="addpaused = false">false</option>
@@ -363,7 +363,7 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrl" size="1" noshade>
-<p>Komprimierung beim Hochladen hinzuf&uuml;gen, entweder "none" oder "zip". N&uuml;tzlich wenn SABNZBD extern (Server, NAS, etc) l&auml;uft</p>
+<p>Komprimierung beim Hochladen hinzufügen, entweder "none" oder "zip". Nützlich wenn SABNZBD extern (Server, NAS, etc) läuft</p>
 <div class="pgStandard"><input type="text" id="pgcompression" name="pgcompression" value="compression = &quot;none&quot;" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="compression = &quot;none&quot;">none</option>
@@ -374,7 +374,7 @@ input:focus{outline:none;}
 <div id="nzbget" style="display:none;">
 <h1>NZBGET</h1>
 <p>NZBGET-Hostname</p>
-<div class="pgStandard"><input type="text" id="pghostnget" name="pghostnget" value="host = &quot;localhost&quot;"readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="host = " hidden/></div>
+<div class="pgStandard"><input type="text" id="pghostnget" name="pghostnget" value="host = &quot;localhost&quot;"readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="host = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>NZBGET-Port</p>
 <div class="pgStandard"><input type="text" id="pgportnget" name="pgportnget" value="port = 6789" readonly/><input class="small-input" type="text" id="comb" value="6789" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="port = " hidden/></div>
@@ -387,7 +387,7 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrl" size="1" noshade>
-<p>SSL-Sicherheitspr&uuml;fungen &uuml;berspringen<br>(z. B. f&uuml;r selbstsignierte Zertifikate)</p>
+<p>SSL-Sicherheitsprüfungen überspringen<br>(z. B. für selbstsignierte Zertifikate)</p>
 <div class="pgStandard"><input type="text" id="pgskip_check_nget" name="pgskip_check_nget" value="skip_check = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_check = false">false</option>
@@ -395,18 +395,18 @@ input:focus{outline:none;}
      </select></div>
 <hr class="hrl" size="1" noshade>
 <p>Basic Auth Benutzername</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgusernget" name="pgusernget" value="user = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-350px;" oninput="combine(event);"/><input type="text" value="user = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgusernget" name="pgusernget" value="user = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-350px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="user = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basic Auth Passwort</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgpassnget" name="pgpassnget" value="pass = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-349px;" oninput="combine(event);"/><input type="text" value="pass = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgpassnget" name="pgpassnget" value="pass = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-349px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="pass = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basepath</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgbasepathnget" name="pgbasepathnget" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);"/><input type="text" value="basepath = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgbasepathnget" name="pgbasepathnget" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="basepath = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Kategorie</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgcategorynget" name="pgcategorynget" value="category = &quot;&quot;" readonly/><input class="medium-input"t id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);"/><input type="text" value="category = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgcategorynget" name="pgcategorynget" value="category = &quot;&quot;" readonly/><input class="medium-input"t id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="category = " hidden/></div>
 <hr class="hrl" size="1" noshade>
-<p>NZB pausiert zur Warteschlange hinzuf&uuml;gen</p>
+<p>NZB pausiert zur Warteschlange hinzufügen</p>
 <div class="pgStandard"><input type="text" id="pgaddpausednget" name="pgaddpausednget" value="addpaused = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="addpaused = false">false</option>
@@ -417,7 +417,7 @@ input:focus{outline:none;}
 <div id="synologydls" style="display:none;">
 <h1>SYNOLOGYDLS</h1>
 <p>Downloadstation-Host</p>
-<div class="pgStandard"><input type="text" id="pghostsyn" name="pghostsyn" value="host = &quot;localhost&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="host = " hidden/></div>
+<div class="pgStandard"><input type="text" id="pghostsyn" name="pghostsyn" value="host = &quot;localhost&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="host = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Downloadstation-Port</p>
 <div class="pgStandard"><input type="text" id="pgportsyn" name="pgportsyn" value="port = 5000" readonly/><input class="small-input" type="text" id="comb" value="5000" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="port = " hidden/></div>
@@ -430,7 +430,7 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrl" size="1" noshade>
-<p>SSL-Sicherheitspr&uuml;fungen &uuml;berspringen<br>(z. B. f&uuml;r selbstsignierte Zertifikate)</p>
+<p>SSL-Sicherheitsprüfungen überspringen<br>(z. B. für selbstsignierte Zertifikate)</p>
 <div class="pgStandard"><input type="text" id="pgskip_check_syn" name="pgskip_check_syn" value="skip_check = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_check = false">false</option>
@@ -439,18 +439,18 @@ input:focus{outline:none;}
      </div>
 <hr class="hrl" size="1" noshade>
 <p>Downloadstation-Benutzername</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgusersyn" name="pgusersyn" value="user = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-350px;" oninput="combine(event);"/><input type="text" value="user = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgusersyn" name="pgusersyn" value="user = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-350px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="user = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Downloadstation-Passwort</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgpasssyn" name="pgpasssyn" value="pass = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-349px;" oninput="combine(event);"/><input type="text" value="pass = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgpasssyn" name="pgpasssyn" value="pass = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-349px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="pass = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basepath</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgbasepathsyn" name="pgbasepathsyn" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);"/><input type="text" value="basepath = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgbasepathsyn" name="pgbasepathsyn" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="basepath = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 </div>
 <div id="nzbcheck" style="display:block;">
 <h1>NZBCheck</h1>
-<p>Fehlgeschlagene NZBs nicht &uuml;berspringen</p>
+<p>Fehlgeschlagene NZBs nicht überspringen</p>
 <div class="pgStandard"><input type="text" id="pgskip_failed" name="pgskip_failed" value="skip_failed = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_failed = true">true</option>
@@ -489,17 +489,17 @@ input:focus{outline:none;}
 <div class="column">
 <div id="categories" style="display:block;">
 <h1>KATEGORISIERER</h1>
-<p>Gib hier deine Kategorien und deine regul&auml;ren Ausdr&uuml;cke ein.</p>
+<p>Gib hier deine Kategorien und deine regulären Ausdrücke ein.</p>
 <p>Bitte entferne "#" wenn du die Kategorien nutzen willst</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgseries" name="pgseries" value="# series = (s\d+e\d+|s\d+ complete)"/></div>
 <div class="pgStandard"><input type="text" class="large-input" id="pgmovies" name="pgmovies" value="# movies = (x264|xvid|bluray|720p|1080p|untouched)"/></div>
-<div class="pgStandard"><input type="text" class="large-input" id="pgetc" name="pgetc" value="# Kategorie hinzuf&uuml;gen"/></div>
-<div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Kategorie hinzuf&uuml;gen"/></div>
-<div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Kategorie hinzuf&uuml;gen"/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc" name="pgetc" value="# Kategorie hinzufügen"/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Kategorie hinzufügen"/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Kategorie hinzufügen"/></div>
 </div>
 <div id="searchengines" style="display:block;">
 <h1>SUCHMASCHINEN</h1>
-<p style="margin-bottom:5px;">Werte zwischen 0 und 9 festlegen: 0 = deaktiviert, 1-9 = aktiviert, 1-9 sind auch die Reihenfolge, in der die Suchmaschinen verwendet werden. Es sind mehrere Server mit derselben Reihenfolgenummer zul&auml;ssig</p>
+<p style="margin-bottom:5px;">Werte zwischen 0 und 9 festlegen: 0 = deaktiviert, 1-9 = aktiviert, 1-9 sind auch die Reihenfolge, in der die Suchmaschinen verwendet werden. Es sind mehrere Server mit derselben Reihenfolgenummer zulässig</p>
 <p>NZBIndex aktivieren</p>
 <div class="pgStandard"><input type="text" id="pgnzbindex" name="pgnzbindex" value="nzbindex = 1" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -532,7 +532,7 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p>NZB-Direktsuche aktivieren<br>(Einstellungen f&uuml;r die NZB-Direktsuche erforderlich)</p>
+<p>NZB-Direktsuche aktivieren<br>(Einstellungen für die NZB-Direktsuche erforderlich)</p>
 <div class="pgStandard"><input type="text" id="pgdirectsearch" name="pgdirectsearch" value="directsearch = 4" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="directsearch = 4"> 4 </option>
@@ -546,7 +546,7 @@ input:focus{outline:none;}
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIREKTSUCHE</h1>
 <p>Hostname Ihres Usenet-Servers</p>
-<div class="pgStandard"><input type="text" id="pghostdir" name="pghostdir" value="host = &quot;&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;&quot;" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="host = " hidden/></div>
+<div class="pgStandard"><input type="text" id="pghostdir" name="pghostdir" value="host = &quot;&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="host = " hidden/></div>
 <hr class="hrr" size="1" noshade>
 <p>Portnummer Ihres Usenet-Servers</p>
 <div class="pgStandard"><input type="text" id="pgportdir" name="pgportdir" value="port = 563"/>
@@ -566,12 +566,12 @@ input:focus{outline:none;}
      </div>
 <hr class="hrr" size="1" noshade>
 <p>Benutzername Ihres Usenet-Kontos</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgusername" name="pgusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);"/><input type="text" value="username = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgusername" name="pgusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="username = " hidden/></div>
 <hr class="hrr" size="1" noshade>
 <p>Ihr Usenet-Kontopasswort</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgpassworddir" name="pgpassworddir" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);"/><input type="text" value="password = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgpassworddir" name="pgpassworddir" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
 <hr class="hrr" size="1" noshade>
-<p>Maximal zul&auml;ssige Verbindungen zu Ihrem Usenet-Server<br>(Standard = 20)</p>
+<p>Maximal zulässige Verbindungen zu Ihrem Usenet-Server<br>(Standard = 20)</p>
 <div class="pgStandard"><input type="text" id="pgconnections" name="pgconnections" value="connections = 20" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="connections = 20"> 20 </option>
@@ -582,8 +582,8 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p style="margin-bottom:5px;">Experimentiere mit der Stundenanzahl. Oftmals reicht eine kleinere Anzahl (zB. 4) aus, was die Suchzeit deutlich verk&uuml;rzt</p>
-<p>Anzahl der Stunden, die ab dem angegebenen Datum zur&uuml;ckgesucht werden sollen (Standard = 12)</p>
+<p style="margin-bottom:5px;">Experimentiere mit der Stundenanzahl. Oftmals reicht eine kleinere Anzahl (zB. 4) aus, was die Suchzeit deutlich verkürzt</p>
+<p>Anzahl der Stunden, die ab dem angegebenen Datum zurückgesucht werden sollen (Standard = 12)</p>
 <div class="pgStandard"><input type="text" id="pghours" name="pghours" value="hours = 12"/ readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="hours = 12"> 12 </option>
@@ -596,7 +596,7 @@ input:focus{outline:none;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p>Anzahl der Stunden, die ab dem angegebenen Datum vorw&auml;rts gesucht werden sollen (Standard = 12)</p>
+<p>Anzahl der Stunden, die ab dem angegebenen Datum vorwärts gesucht werden sollen (Standard = 12)</p>
 <div class="pgStandard"><input type="text" id="pgforward_hours" name="pgforward_hours" value="forward_hours = 12"readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="forward_hours = 12"> 12 </option>
@@ -615,7 +615,7 @@ input:focus{outline:none;}
 <p>Anzahl der pro Scan zu ladenden Artikel (Standard = 20000)</p>
 <div class="pgStandard"><input type="text" id="pgstep" name="pgstep" value="step = 20000" readonly/><input class="small-input" id="comb" value="20000" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="step = " hidden/></div>
 <hr class="hrr" size="1" noshade>
-<p>Direkte Suche &uuml;berspringen, wenn best_nzb verwendet wird und bereits eine gute NZB-Datei gefunden wurde</p>
+<p>Direkte Suche überspringen, wenn best_nzb verwendet wird und bereits eine gute NZB-Datei gefunden wurde</p>
 <div class="pgStandard"><input type="text" id="pgskipdir" name="pgskipdir" value="skip = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip = true">true</option>
@@ -635,7 +635,7 @@ input:focus{outline:none;}
 </form>
 <br style="clear:both;">
 <div class="buttons" align="center">
-<a class="button tooltip" onclick="getData()">Erstellen</a> ==>
+<a class="button" onclick="getData()">Erstellen</a> ==>
 <a class="button" onclick="safeConfig()">Speichern</a> ==>
 <a class="button" onclick="clearConfig()">Reset</a>
 </div>
@@ -772,10 +772,12 @@ function changeStyle() {
      changeStyle.textContent = "Hell";
     }
 }
+function setCursor(){
+ let inputField = document.querySelectorAll('#comb');
+  for (let i = 0; i < inputField.length; i++) {
+  inputField[i].setSelectionRange(1, 1);
+  }
+}
 </script>
 </body>
 </html>
-
-
-
-
