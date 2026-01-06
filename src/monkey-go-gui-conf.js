@@ -131,3 +131,9 @@ function changeStyle() {
      changeStyle.textContent = "Hell";
     }
 }
+function setCursor() {
+ let inputField = document.querySelectorAll('#comb');
+  for (let i = 0; i < inputField.length; i++) {
+  inputField[i].setSelectionRange(1, 1);
+  }
+}
