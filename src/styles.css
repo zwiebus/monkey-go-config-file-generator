@@ -110,10 +110,13 @@ input {
 }
 input:focus {
   outline: none;
+  border-color:#43d1ff;
+  border-radius: 0;
 }
 #comb {
   border-left: none;
   border-right: none;
+  border-radius: 0;
 }
 .large-input {
   width: 380px;
@@ -175,4 +178,5 @@ input:focus {
 .hrr {
   margin-right: -10px;
 }
+
 
