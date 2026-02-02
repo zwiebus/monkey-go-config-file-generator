@@ -149,10 +149,12 @@ let template = {};
 %pghours%
 # Number of hours to search forward from the provided date (default = 12)
 %pgforward_hours%
-# Number of parallel scans (default = 50)
-%pgscans%
 # Number of articles to load per scan (default = 20000)
 %pgstep%
+# Defines the number of seconds after which an overview request is considered stalled (default = 5).
+%pgovtimeout%
+# Defines the number of retry attempts when an overview request is stalled (default = 3).
+%pgovretries%
 # Skip direct search when using best_nzb and a good NZB file has already been found
 %pgskipdir%
 # Search only in the first group if several groups are provided
@@ -607,12 +609,15 @@ option {min-width:40px;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade="">
-<p>Number of parallel scans (default = 50)</p>
-<div class="pgStandard"><input type="text" id="pgscans" name="pgscans" value="scans = 50" readonly/><input class="small-input" id="comb" value="50" style="margin-left:-193px;" oninput="combine(event);"><input type="text" value="scans = " hidden/></div>
-<hr class="hrr" size="1" noshade="">
 <p>Number of items to load per scan (default = 20000)</p>
 <div class="pgStandard"><input type="text" id="pgstep" name="pgstep" value="step = 20000" readonly/><input class="small-input" id="comb" value="20000" style="margin-left:-201px;" oninput="combine(event);"><input type="text" value="step = " hidden/></div>
 <hr class="hrr" size="1" noshade="">
+<p>Defines the number of seconds after which an overview request<br>is considered stalled. (default = 5).</p>
+<div class="pgStandard"><input type="text" id="pgovtimeout" name="pgovtimeout" value="overview_timeout = 5" readonly/><input class="medium-input" id="comb" value="5" style="margin-left:-126px;width:110px;" oninput="combine(event);"/><input type="text" value="overview_timeout = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Defines the number of retry attempts when an overview request<br>is stalled (default = 3)</p>
+<div class="pgStandard"><input type="text" id="pgovretries" name="pgovretries" value="overview_retries = 3" readonly/><input class="small-input" id="comb" value="3" style="margin-left:-131px;width:110px;" oninput="combine(event);"/><input type="text" value="overview_retries = " hidden/></div>
+<hr class="hrr" size="1" noshade>
 <p>Skip direct search if best_nzb is used and a good NZB file has already been found</p>
 <div class="pgStandard"><input type="text" id="pgskipdir" name="pgskipdir" value="skip = true" readonly/>
      <select class="select" onchange="changeValue(event);">
