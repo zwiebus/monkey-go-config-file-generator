@@ -149,10 +149,12 @@ let template = {};
 %pghours%
 # Number of hours to search forward from the provided date (default = 12)
 %pgforward_hours%
-# Number of parallel scans (default = 50)
-%pgscans%
 # Number of articles to load per scan (default = 20000)
 %pgstep%
+# Defines the number of seconds after which an overview request is considered stalled (default = 5).
+%pgovtimeout%
+# Defines the number of retry attempts when an overview request is stalled (default = 3).
+%pgovretries%
 # Skip direct search when using best_nzb and a good NZB file has already been found
 %pgskipdir%
 # Search only in the first group if several groups are provided
@@ -191,7 +193,7 @@ h2 {color:#43d1ff;font-size:16px;margin-left:20px;margin-top:0;}
 .select {margin-left:5px;padding:0 6px;min-width:70px;}
 #pgconfig {font-size:11px;margin-top:5px;}
 input {color:#F1F2FF;background:#4d555d;padding:1px 6px;border: 1px solid #DEE1F7;border-radius:3px;width:230px;overflow-x: hidden;}
-input:focus{outline:none;border-color:#43d1ff;border-radius:0;}
+input:focus{outline:none;border-color:#43d1ff;}
 #comb {border-left:none;border-right:none;border-radius:0;}
 .large-input {width:380px;}
 .medium-input {width:280px;}
@@ -449,6 +451,7 @@ input:focus{outline:none;border-color:#43d1ff;border-radius:0;}
 <hr class="hrl" size="1" noshade>
 </div>
 <div id="nzbcheck" style="display:block;">
+<hr class="hrl" size="1" noshade>
 <h1>NZBCheck</h1>
 <p>Fehlgeschlagene NZBs nicht überspringen</p>
 <div class="pgStandard"><input type="text" id="pgskip_failed" name="pgskip_failed" value="skip_failed = true" readonly/>
@@ -497,6 +500,7 @@ input:focus{outline:none;border-color:#43d1ff;border-radius:0;}
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Kategorie hinzufügen"/></div>
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Kategorie hinzufügen"/></div>
 </div>
+<hr class="hrr" size="1" noshade>
 <div id="searchengines" style="display:block;">
 <h1>SUCHMASCHINEN</h1>
 <p style="margin-bottom:5px;">Werte zwischen 0 und 9 festlegen: 0 = deaktiviert, 1-9 = aktiviert, 1-9 sind auch die Reihenfolge, in der die Suchmaschinen verwendet werden. Es sind mehrere Server mit derselben Reihenfolgenummer zulässig</p>
@@ -543,6 +547,7 @@ input:focus{outline:none;border-color:#43d1ff;border-radius:0;}
      </select>
      </div>
 </div>
+<hr class="hrr" size="1" noshade>
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIREKTSUCHE</h1>
 <p>Hostname Ihres Usenet-Servers</p>
@@ -609,11 +614,14 @@ input:focus{outline:none;border-color:#43d1ff;border-radius:0;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p>Anzahl paralleler Scans (Standard = 50)</p>
-<div class="pgStandard"><input type="text" id="pgscans" name="pgscans" value="scans = 50" readonly/><input class="small-input" id="comb" value="50" style="margin-left:-193px;" oninput="combine(event);"/><input type="text" value="scans = " hidden/></div>
-<hr class="hrr" size="1" noshade>
 <p>Anzahl der pro Scan zu ladenden Artikel (Standard = 20000)</p>
 <div class="pgStandard"><input type="text" id="pgstep" name="pgstep" value="step = 20000" readonly/><input class="small-input" id="comb" value="20000" style="margin-left:-201px;" oninput="combine(event);"/><input type="text" value="step = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Legt die Anzahl der Sekunden fest, nach denen eine Übersichtsanforderung als blockiert gilt (Standart = 5).</p>
+<div class="pgStandard"><input type="text" id="pgovtimeout" name="pgovtimeout" value="overview_timeout = 5" readonly/><input class="medium-input" id="comb" value="5" style="margin-left:-126px;width:110px;" oninput="combine(event);"/><input type="text" value="overview_timeout = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Legt die Anzahl der Wiederholungsversuche fest, wenn eine Übersichtsanforderung blockiert ist (Standart = 3)</p>
+<div class="pgStandard"><input type="text" id="pgovretries" name="pgovretries" value="overview_retries = 3" readonly/><input class="small-input" id="comb" value="3" style="margin-left:-131px;width:110px;" oninput="combine(event);"/><input type="text" value="overview_retries = " hidden/></div>
 <hr class="hrr" size="1" noshade>
 <p>Direkte Suche überspringen, wenn best_nzb verwendet wird und bereits eine gute NZB-Datei gefunden wurde</p>
 <div class="pgStandard"><input type="text" id="pgskipdir" name="pgskipdir" value="skip = true" readonly/>
