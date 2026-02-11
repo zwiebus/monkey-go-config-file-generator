@@ -169,19 +169,23 @@ let template = {};
     .hrl {margin-right:-10px!Important;}
     .hrr {margin-left:-10px!Important;}
 }
-/* @media only screen and (max-width:420px) {
-    .large-input {width:330px!Important;}
+@media only screen and (max-width:420px) {
+    .large-input {width:310px!Important;}
     .changebg {margin-right:5px!Important;}
-    #comb {width:!Important;}
-} */
+}
 .light-mode {color:#000!Important;background:#F5F5F5!Important;border-color:#000!Important;}
 .light-mode input {background:#fff!Important;}
+.light-mode input:focus {border-color: red!Important;}
+.light-mode .slider {background:transparent!Important;}
+.light-mode .help {color:#0600FD;}
+.light-mode .help:hover {color:#0060FF;}
 .light-mode .button {color:#00009F!Important;background:#D0F1F3!Important;}
 .light-mode .button:hover {background:#A5DAED!Important;}
 .light-mode .button:active {background:#F2FBFA!Important;}
 .light-mode h1, .light-mode h2, .light-mode .cat {color:#00009F!Important;}
-body {color:#F1F2FF;font-family:monospace,Consolas,Arial;background:#313239}
+body {color:#F1F2FF;font-family:monospace,Consolas,Menlo,Monaco,DroidSansMono,Arial;background:#313239}
 p {margin:2px 0;}
+a {text-decoration:none;}
 .container {content: "";display: table;clear: both;font-size:13px;line-height:16px;background:#454750;width:98%;max-width:900px;margin:10px auto;padding:10px;border:1px solid #DEE1F7;border-radius:5px;}
 .column {float:left;width:50%;}
 h1 {font-size:14px;margin:6px;color:#43d1ff;}
@@ -193,27 +197,34 @@ input:focus{outline:none;}
 option {min-width:40px;}
 #comb {border-left:none;border-right:none;}
 .large-input {width:380px;}
-.medium-input {width:280px;}
-.small-input {width:165px;}
+.medium-input {width:289px;}
+.small-input {width:188px;}
 #pgEXECUTE {width:188px;}
 #pgportdir {width:220px;}
-.button {background:#1A5779;color:#fff;font-size:14px;border:1px solid #1C60A0;border-radius:3px;padding:3px 6px;cursor:pointer;}
+.button {background:#1A5779;color:#fff;font-size:14px;border:1px solid #1C60A0;border-radius:3px;padding:3px 6px;cursor:pointer;text-decoration:none;}
 .button:hover {background:#2d4f78;border-color:#325378;}
 .button:active {background:#7C37AD;border-color:#535a62;}
 .buttons {margin-top:20px;}
 .changebg {float:right;margin-right:20px;width:50px;text-align:center;}
-#pgseries, #pgmovies, #pgetc, #pgetc2, #pgconnections {margin-bottom:5px;}
-.cat {color:#43d1ff;}
+#pgseries, #pgmovies, #pgetc, #pgetc2 {margin-bottom:5px;}
+.cat, .copy {color:#43d1ff;}
 .copy {position:relative;right:10px;bottom:-5px;float:right;}
 .hrl {margin-left:-10px;margin-right:20px;}
 .hrr {margin-right:-10px;}
-.minconf {display:none;}
+.slider {-webkit-appearance:none;position:relative;top:6px;margin:0 0 10px 0;width:232px;height:19px;border:none;background:transparent;display:block;}
+.slider::-webkit-slider-runnable-track {width:232px;height:6px;border:none;border-radius:3px;background:#F0F8FF;box-shadow: 1px 1px 1px #000, 0px 0px 1px #0d0d0d;}
+.slider::-moz-range-track {width:232px;height:6px;border:none;border-radius:3px;background:#F0F8FF;box-shadow: 1px 1px 1px #000, 0px 0px 1px #0d0d0d;}
+.slider::-webkit-slider-thumb {-webkit-appearance:none;margin-top:-7px;width:11px;height:19px;background:#a1d4ff;cursor:pointer;border:1px solid #000;border-radius:30%;}
+.slider::-moz-range-thumb {width:11px;height:19px;background:#a1d4ff;cursor:pointer;border:1px solid #000;border-radius:30%;}
+.moon {height:25px;width:25px;border-radius:50%;background:#fff;box-shadow:10px 0 0 0 #000 inset;cursor:pointer;}
+.sun {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0,0,256,256' fill-rule='nonzero'%3E%3Cg fill='%23ffd200' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(8.53333,8.53333)'%3E%3Cpath d='M14.98438,0.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212zM5.79688,4.79883c-0.40657,0.0009 -0.77213,0.24784 -0.92475,0.62467c-0.15262,0.37684 -0.06192,0.80856 0.22944,1.09212l2.12109,2.12109c0.25082,0.26123 0.62326,0.36646 0.9737,0.2751c0.35044,-0.09136 0.62411,-0.36503 0.71546,-0.71546c0.09136,-0.35044 -0.01387,-0.72288 -0.2751,-0.9737l-2.12109,-2.12109c-0.18874,-0.19402 -0.44807,-0.30325 -0.71875,-0.30273zM24.17188,4.79883c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36645,0.62326 -0.2751,0.9737c0.09136,0.35043 0.36503,0.6241 0.71546,0.71546c0.35043,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM15,8c-3.86599,0 -7,3.13401 -7,7c0,3.86599 3.13401,7 7,7c3.86599,0 7,-3.13401 7,-7c0,-3.86599 -3.13401,-7 -7,-7zM2,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM25,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM7.91016,21.06055c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36646,0.62326 -0.2751,0.9737c0.09136,0.35044 0.36503,0.6241 0.71546,0.71546c0.35044,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM22.06055,21.06055c-0.40692,0.00011 -0.77321,0.24676 -0.92633,0.62377c-0.15312,0.37701 -0.06255,0.80922 0.22907,1.09303l2.12109,2.12109c0.25082,0.26123 0.62326,0.36645 0.9737,0.27509c0.35043,-0.09136 0.6241,-0.36502 0.71546,-0.71546c0.09136,-0.35043 -0.01386,-0.72288 -0.27509,-0.9737l-2.12109,-2.12109c-0.18827,-0.19353 -0.4468,-0.30272 -0.7168,-0.30273zM14.98438,23.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");width:30px;height:30px;cursor:pointer;}
+.help {color:#00AFFF;font-weight:bold;}
+.help:hover {color:#73CBEA;}
 </style>
-<link type="text/css" rel="stylesheet" charset="UTF-8" href="./Monkey-Go-conf-GUI.en_files/m=el_main_css"></head>
 <body>
 <div class="container">
-<span class="changebg button" id="changestyle" onclick="changeStyle()">Bright</span>
-<h2>Create Monkey-Go config file</h2>
+<span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
+<h2>Create Nzb-Monkey-Go config file</h2>
 <span>To create only NZB files and save them in a folder, simply specify the nzbsavepath <font color="#FF0000">&#9733;</font> under <span class="cat">EXECUTE</span>. For the most successful search, however, you should definitely configure <a class="cat" href="#directsearch">DIRECTSEARCH</a>. Otherwise, select the values required for your setup. For input fields without selections and with quotation marks, the information must always be enclosed in "|".</span>
 <form id="pg" name="pg">
 <div class="column">
@@ -446,8 +457,8 @@ option {min-width:40px;}
 <hr class="hrl" size="1" noshade="">
 <p>Basepath</p>
 <div class="pgStandard"><input class="large-input" type="text" id="pgbasepathsyn" name="pgbasepathsyn" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="basepath = " hidden/></div>
-<hr class="hrl" size="1" noshade="">
 </div>
+<hr class="hrl" size="1" noshade="">
 <div id="nzbcheck" style="display:block;">
 <h1>NZBCheck</h1>
 <p>Do not skip failed NZBs</p>
@@ -485,8 +496,6 @@ option {min-width:40px;}
      </div>
 </div>
 <hr class="hrl" size="1" noshade="">
-</div>
-<div class="column">
 <div id="categories" style="display:block;">
 <h1>CATEGORIZER</h1>
 <p>Enter your categories and regular expressions here.</p>
@@ -497,6 +506,9 @@ option {min-width:40px;}
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Add category"></div>
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Add category"></div>
 </div>
+<hr class="hrl" size="1" noshade="">
+</div>
+<div class="column">
 <div id="searchengines" style="display:block;">
 <h1>SEARCHENGINES</h1>
 <p style="margin-bottom:5px;">Set values between 0 and 9: 0 = disabled, 1-9 = enabled, 1-9 also represents the order in which the search engines are used. Multiple servers with the same order number are allowed.</p>
@@ -543,6 +555,7 @@ option {min-width:40px;}
      </select>
      </div>
 </div>
+<hr class="hrr" size="1" noshade="">
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIRECTSEARCH</h1>
 <p>Hostname of your Usenet server</p>
@@ -571,52 +584,66 @@ option {min-width:40px;}
 <p>Your Usenet account password</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgpassworddir" name="pgpassworddir" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="password = " hidden/></div>
 <hr class="hrr" size="1" noshade="">
+<p style="margin-bottom:5px;">Experiment with the values using the sliders to determine the best search speed.<br>You can find more information on this in the <a href="https://github.com/Tensai75/nzb-monkey-go/wiki/%5BDIRECTSEARCH%5D" class="help" target="_blank">Online Help</a><br>
+However, the default settings should work good for most conditions.</p>
+<hr class="hrr" size="1" noshade>
 <p>Maximum allowed connections to your Usenet server <br>(default = 20)</p>
 <div class="pgStandard"><input type="text" id="pgconnections" name="pgconnections" value="connections = 20" readonly/>
-     <select class="select" onchange="changeValue(event);">
-      <option value="connections = 20">20</option>
-      <option value="connections = 10">10</option>
-      <option value="connections = 30">30</option>
-      <option value="connections = 40">40</option>
-      <option value="connections = 50">50</option>
-     </select>
-     </div>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="5" min="5" max="100" value="20" class="slider" oninput="combine(event);"/>
+    <input type="text" value="connections = " hidden/>
+<!-- Comment this in for manual parameter input :
+     <input id="comb" value="20" style="margin-left:-165px; width:130px;" oninput="combine(event);"/>
+     <input type="text" value="connections = " hidden/> -->
+</div>
 <hr class="hrr" size="1" noshade="">
-<p style="margin-bottom:5px;">Experiment with the number of hours. Often, a smaller number (e.g., 4) is sufficient, which significantly reduces the search time.</p>
-<p>Number of hours to search back from the specified date<br>(default = 12)</p>
-<div class="pgStandard"><input type="text" id="pghours" name="pghours" value="hours = 12" readonly/>
-     <select class="select" onchange="changeValue(event);">
-      <option value="hours = 12">12</option>
-      <option value="hours = 2">2</option>
-      <option value="hours = 4">4</option>
-      <option value="hours = 6">6</option>
-      <option value="hours = 8">8</option>
-      <option value="hours = 10">10</option>
-      <option value="hours = 24">24</option>
-     </select>
-     </div>
+<p>Number of hours to search back from the specified date<br>(default = 4)</p>
+<div class="pgStandard"><input type="text" id="pghours" name="pghours" value="hours = 4" readonly/>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="1" min="2" max="24" value="4" class="slider" oninput="combine(event);"/>
+    <input type="text" value="hours = " hidden/>
+<!-- Comment this in for manual parameter input :
+     <input id="comb" value="20" style="margin-left:-200px; width:140px;" oninput="combine(event);"/>
+     <input type="text" value="hours = " hidden/>  -->
+</div>
 <hr class="hrr" size="1" noshade="">
-<p>Number of hours to search forward from the specified date<br>(default = 12)</p>
-<div class="pgStandard"><input type="text" id="pgforward_hours" name="pgforward_hours" value="forward_hours = 12" readonly/>
-     <select class="select" onchange="changeValue(event);">
-      <option value="forward_hours = 12">12</option>
-      <option value="forward_hours = 2">2</option>
-      <option value="forward_hours = 4">4</option>
-      <option value="forward_hours = 6">6</option>
-      <option value="forward_hours = 8">8</option>
-      <option value="forward_hours = 10">10</option>
-      <option value="forward_hours = 24">24</option>
-     </select>
-     </div>
+<p>Number of hours to search forward from the specified date<br>(default = 4)</p>
+<div class="pgStandard"><input type="text" id="pgforward_hours" name="pgforward_hours" value="forward_hours = 4" readonly/>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="1" min="2" max="24" value="4" class="slider" oninput="combine(event);"/>
+    <input type="text" value="hours = " hidden/>
+<!-- Comment this in for manual parameter input :
+     <input id="comb" value="20" style="margin-left:-200px; width:140px;" oninput="combine(event);"/>
+     <input type="text" value="hours = " hidden/>  -->
+</div>
 <hr class="hrr" size="1" noshade="">
-<p>Number of items to load per scan (default = 20000)</p>
-<div class="pgStandard"><input type="text" id="pgstep" name="pgstep" value="step = 20000" readonly/><input class="small-input" id="comb" value="20000" style="margin-left:-201px;" oninput="combine(event);"><input type="text" value="step = " hidden/></div>
+<p>Number of items to load per scan (default = 50000)</p>
+<div class="pgStandard"><input type="text" id="pgstep" name="pgstep" value="step = 50000" readonly/>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="1000" min="20000" max="100000" value="50000" class="slider" oninput="combine(event);"/>
+    <input type="text" value="step = " hidden/>
+<!-- Comment this in for manual parameter input :
+    <input class="small-input" id="comb" value="20000" style="margin-left:-201px;" oninput="combine(event);"/>
+    <input type="text" value="step = " hidden/> -->
+</div>
 <hr class="hrr" size="1" noshade="">
 <p>Defines the number of seconds after which an overview request<br>is considered stalled. (default = 5).</p>
-<div class="pgStandard"><input type="text" id="pgovtimeout" name="pgovtimeout" value="overview_timeout = 5" readonly/><input class="medium-input" id="comb" value="5" style="margin-left:-126px;width:110px;" oninput="combine(event);"/><input type="text" value="overview_timeout = " hidden/></div>
+<div class="pgStandard"><input type="text" id="pgovtimeout" name="pgovtimeout" value="overview_timeout = 5" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="overview_timeout = 5"> 5 </option>
+      <option value="overview_timeout = 8"> 8 </option>
+      <option value="overview_timeout = 10"> 10 </option>
+     </select>
+     </div>
 <hr class="hrr" size="1" noshade>
 <p>Defines the number of retry attempts when an overview request<br>is stalled (default = 3)</p>
-<div class="pgStandard"><input type="text" id="pgovretries" name="pgovretries" value="overview_retries = 3" readonly/><input class="small-input" id="comb" value="3" style="margin-left:-131px;width:110px;" oninput="combine(event);"/><input type="text" value="overview_retries = " hidden/></div>
+<div class="pgStandard"><input type="text" id="pgovretries" name="pgovretries" value="overview_retries = 3" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="overview_retries = 3"> 3 </option>
+      <option value="overview_retries = 4"> 4 </option>
+      <option value="overview_retries = 5"> 5 </option>
+     </select>
+     </div>
 <hr class="hrr" size="1" noshade>
 <p>Skip direct search if best_nzb is used and a good NZB file has already been found</p>
 <div class="pgStandard"><input type="text" id="pgskipdir" name="pgskipdir" value="skip = true" readonly/>
@@ -643,6 +670,7 @@ option {min-width:40px;}
  <a class="button" onclick="clearConfig()">Reset</a>
 </div>
 <div style="display:block;" id="pgconfig"></div>
+<!-- <div class="copy">&copy; zwiebus</div>  -->
 </div>
 <script>
 const dropdown = document.getElementById("select_target");
@@ -764,15 +792,17 @@ function clearConfig() {
 }
 function changeStyle() {
   let elements = document.querySelectorAll('body, .container , input , h1 , h2, .cat');
-  let changeStyle = document.getElementById("changestyle");
+  let changeStyle = document.querySelector("#changestyle");
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
    }
    let element = document.querySelector('.container');
     if (element.classList.contains('light-mode')) {
-     changeStyle.textContent = "Dark";
+     changeStyle.classList.remove("sun");
+     changeStyle.classList.add("moon");
     } else {
-     changeStyle.textContent = "Bright";
+     changeStyle.classList.remove("moon");
+     changeStyle.classList.add("sun");
     }
 }
 function setCursor(){
