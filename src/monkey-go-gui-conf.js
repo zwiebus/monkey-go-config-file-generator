@@ -119,19 +119,21 @@ function clearConfig() {
   scrollToTop();
 }
 function changeStyle() {
-  let elements = document.querySelectorAll('body, .container , input , h1 , h2, .cat');
-  let changeStyle = document.getElementById("changestyle");
+  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help');
+  let changeStyle = document.querySelector("#changestyle");
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
    }
    let element = document.querySelector('.container');
     if (element.classList.contains('light-mode')) {
-     changeStyle.textContent = "Dunkel";
+     changeStyle.classList.remove("sun");
+     changeStyle.classList.add("moon");
     } else {
-     changeStyle.textContent = "Hell";
+     changeStyle.classList.remove("moon");
+     changeStyle.classList.add("sun");
     }
 }
-function setCursor() {
+function setCursor(){
  let inputField = document.querySelectorAll('#comb');
   for (let i = 0; i < inputField.length; i++) {
   inputField[i].setSelectionRange(1, 1);
