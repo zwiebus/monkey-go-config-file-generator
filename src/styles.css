@@ -232,11 +232,10 @@ input:focus {
   border-radius: 30%;
 }
 .moon {
-  height: 25px;
-  width: 25px;
-  background:#fff;
+  height: 26px;
+  width: 26px;
   border-radius: 50%;
-  box-shadow: 10px 0 0 0 #000 inset;
+  box-shadow: 10px 0 0 0 #7F7F7F inset;
   cursor:pointer;
 }
 .sun {
@@ -246,7 +245,9 @@ input:focus {
   cursor:pointer;
 }
 .help {
-  float: right;
-  margin: 5px;
-  font-size: 0.85em;
+  color:#00AFFF;
+  font-weight:bold;
+}
+.help:hover {
+  color:#73CBEA;
 }
