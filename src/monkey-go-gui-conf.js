@@ -119,7 +119,7 @@ function clearConfig() {
   scrollToTop();
 }
 function changeStyle() {
-  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help');
+  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow');
   let changeStyle = document.querySelector("#changestyle");
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
@@ -139,3 +139,4 @@ function setCursor(){
   inputField[i].setSelectionRange(1, 1);
   }
 }
+
