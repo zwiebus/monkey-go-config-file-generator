@@ -162,13 +162,6 @@ let template = {};
 `;
 </script>
 <style>
-@media only screen and (max-width:900px) {
-    body {background:#454750!Important;}
-    .container {border:none!Important;margin:0 5px!Important;padding:0!Important;}
-    .column {width:100%!Important;}
-    .hrl {margin-right:-10px!Important;}
-    .hrr {margin-left:-10px!Important;}
-}
 @media only screen and (max-width:420px) {
     .large-input {width:310px!Important;}
     .changebg {margin-right:5px!Important;}
@@ -181,6 +174,8 @@ let template = {};
 .light-mode input {background:#fff!Important;}
 .light-mode input:focus {border-color: red!Important;}
 .light-mode .slider {background:transparent!Important;}
+.light-mode .help {color:#0600FD!Important;}
+.light-mode .help:hover {color:#0060FF!Important;}
 .light-mode .button {color:#00009F!Important;background:#D0F1F3!Important;}
 .light-mode .button:hover {background:#A5DAED!Important;}
 .light-mode .button:active {background:#F2FBFA!Important;}
@@ -214,20 +209,21 @@ input:focus{outline:none; border-color: #43d1ff;}
 .slider::-moz-range-track {width:232px;height:6px;border:none;border-radius:3px;background:#F0F8FF;box-shadow: 1px 1px 1px #000, 0px 0px 1px #0d0d0d;}
 .slider::-webkit-slider-thumb {-webkit-appearance:none;margin-top:-7px;width:13px;height:21px;background:#a1d4ff;cursor:pointer;border:1px solid #000;border-radius:30%;}
 .slider::-moz-range-thumb {width:13px;height:21px;background:#a1d4ff;cursor:pointer;border:1px solid #000;border-radius:30%;}
-.moon {height: 25px;width: 25px;border-radius: 50%;box-shadow: 10px 0 0 0 #000 inset;cursor:pointer;}
+.moon {height: 26px;width: 26px;border-radius: 50%;box-shadow: 10px 0 0 0 #7F7F7F inset;cursor:pointer;}
 .sun {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0,0,256,256' width='30px' height='30px' fill-rule='nonzero'%3E%3Cg fill='%23ffd200' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(8.53333,8.53333)'%3E%3Cpath d='M14.98438,0.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212zM5.79688,4.79883c-0.40657,0.0009 -0.77213,0.24784 -0.92475,0.62467c-0.15262,0.37684 -0.06192,0.80856 0.22944,1.09212l2.12109,2.12109c0.25082,0.26123 0.62326,0.36646 0.9737,0.2751c0.35044,-0.09136 0.62411,-0.36503 0.71546,-0.71546c0.09136,-0.35044 -0.01387,-0.72288 -0.2751,-0.9737l-2.12109,-2.12109c-0.18874,-0.19402 -0.44807,-0.30325 -0.71875,-0.30273zM24.17188,4.79883c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36645,0.62326 -0.2751,0.9737c0.09136,0.35043 0.36503,0.6241 0.71546,0.71546c0.35043,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM15,8c-3.86599,0 -7,3.13401 -7,7c0,3.86599 3.13401,7 7,7c3.86599,0 7,-3.13401 7,-7c0,-3.86599 -3.13401,-7 -7,-7zM2,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM25,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM7.91016,21.06055c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36646,0.62326 -0.2751,0.9737c0.09136,0.35044 0.36503,0.6241 0.71546,0.71546c0.35044,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM22.06055,21.06055c-0.40692,0.00011 -0.77321,0.24676 -0.92633,0.62377c-0.15312,0.37701 -0.06255,0.80922 0.22907,1.09303l2.12109,2.12109c0.25082,0.26123 0.62326,0.36645 0.9737,0.27509c0.35043,-0.09136 0.6241,-0.36502 0.71546,-0.71546c0.09136,-0.35043 -0.01386,-0.72288 -0.27509,-0.9737l-2.12109,-2.12109c-0.18827,-0.19353 -0.4468,-0.30272 -0.7168,-0.30273zM14.98438,23.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");width:30px;height:30px;cursor:pointer;}
 .help {color:#00AFFF;font-weight:bold;}
 .help:hover {color:#73CBEA;}
+.arrow {border:solid #F1F2FF;border-width:0 3px 3px 0;display:inline-block;padding:3px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg);}
 </style>
 </head>
 <body>
 <div class="container">
 <span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
 <h2>Monkey-Go Config-Datei erstellen</h2>
-<span>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. F&uuml;r eine m&ouml;glichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten w&auml;hle die f&uuml;r dein Setup ben&ouml;tigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anf&uuml;hrungszeichen m&uuml;ssen die Angaben immer zwischen diese eingef&uuml;gt werden "|".</span>
+<span>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. Für eine möglichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten wähle die für dein Setup benötigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anführungszeichen müssen die Angaben immer zwischen diese eingefügt werden "|".</span>
 <form id="pg" name="pg">
 <h1>GENERAL</h1>
-  <p>W&auml;hle ein Ziel f&uuml;r die Verarbeitung von NZB-Dateien</p>
+  <p>Wähle ein Ziel für die Verarbeitung von NZB-Dateien</p>
   <div class="pgStandard">
    <input type="text" id ="pgEXECUTE" name="pgEXECUTE" value="target = &quot;EXECUTE&quot;" readonly/>
      <select class="select" id="select_target">
@@ -238,7 +234,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
    </div>
   <hr class="hr" size="1" noshade>
-<p>Lass den Monkey eine Kategorie ausw&auml;hlen.</p>
+<p>Lass den Monkey eine Kategorie auswählen.</p>
 <p>Weitere Einstellungen dazu findest du unter <a class="cat" href="#categories">KATEGORISIERER</a></p>
   <div class="pgStandard">
    <input type="text" id ="pgcategorize" name="pgcategorize" value="categorize = &quot;off&quot;" readonly/>
@@ -249,7 +245,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
    </div>
   <hr class="hr" size="1" noshade>
-<p>Sekunden, die vor dem Beenden/Schlie&szlig;en des Fensters<br>nach erfolgreichem Abschluss gewartet werden sollen</p>
+<p>Sekunden, die vor dem Beenden/Schließen des Fensters<br>nach erfolgreichem Abschluss gewartet werden sollen</p>
   <div class="pgStandard">
    <input type="text" id ="pgsuccess_wait_time" name="pgsuccess_wait_time" value="success_wait_time = 3" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -260,7 +256,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
    </div>
   <hr class="hr" size="1" noshade>
-<p>Sekunden, die vor dem Beenden/Schlie&szlig;en des Fensters<br>nach einem Fehler gewartet werden sollen</p>
+<p>Sekunden, die vor dem Beenden/Schließen des Fensters<br>nach einem Fehler gewartet werden sollen</p>
   <div class="pgStandard">
    <input type="text" id ="pgerror_wait_time" name="pgerror_wait_time" value="error_wait_time = 10" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -301,7 +297,7 @@ input:focus{outline:none; border-color: #43d1ff;}
 <p>Entweder ein absoluter Pfad oder ein relativer Pfad zum<br>Home- oder beliebigen Verzeichnis des Benutzers</p>
 <div class="pgStandard"><input type="text" id="pgnzbsavepath" name="pgnzbsavepath" value="nzbsavepath = &quot;C:\User\nzb&quot;" hidden/><input class="large-input" id="comb" value="&quot;C:\User\nzb&quot;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="nzbsavepath = " hidden/></div>
 <hr class="hr" size="1" noshade>
-<p>Standardprogramm f&uuml;r NZB-Dateien nicht ausf&uuml;hren</p>
+<p>Standardprogramm für NZB-Dateien nicht ausführen</p>
 <div class="pgStandard"><input type="text" id="pgdontexecute" name="pgdontexecute" value="dontexecute = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="dontexecute = true">true</option>
@@ -309,7 +305,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>Alte NZB-Dateien aus nzbsavepath l&ouml;schen</p>
+<p>Alte NZB-Dateien aus nzbsavepath löschen</p>
 <div class="pgStandard"><input type="text" id="pgclean_up_enable" name="pgclean_up_enable" value="clean_up_enable = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="clean_up_enable = false">false</option>
@@ -317,7 +313,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>NZB-Dateien, die &auml;lter als x Tage sind, werden gel&ouml;scht</p>
+<p>NZB-Dateien, die älter als x Tage sind, werden gelöscht</p>
 <div class="pgStandard"><input type="text" id="pgclean_up_max_age" name="pgclean_up_max_age" value="clean_up_max_age = 2" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="clean_up_max_age = 2"> 2 </option>
@@ -341,7 +337,7 @@ input:focus{outline:none; border-color: #43d1ff;}
       <option value="ssl = true">true</option>
      </select></div>
 <hr class="hr" size="1" noshade>
-<p>SSL-Sicherheitspr&uuml;fungen &uuml;berspringen<br>(z. B. f&uuml;r selbstsignierte Zertifikate)</p>
+<p>SSL-Sicherheitsprüfungen überspringen<br>(z. B. für selbstsignierte Zertifikate)</p>
 <div class="pgStandard"><input type="text" id="pgskip_check" name="pgskip_check" value="skip_check = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_check = false">false</option>
@@ -349,7 +345,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>NZB-Schl&uuml;ssel. Zu finden unter Einstellungen/Allgemein/Sicherheit. Die NZB wird direkt an SABNZBD &uuml;bergeben</p>
+<p>NZB-Schlüssel. Zu finden unter Einstellungen/Allgemein/Sicherheit. Die NZB wird direkt an SABNZBD übergeben</p>
 <div class="pgStandard"><input type="text" id="pgnzbkey" name="pgnzbkey" value="nzbkey = &quot;&quot;" hidden/><input class="large-input" id="comb" value="&quot;&quot;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="nzbkey = " hidden/></div>
 <hr class="hr" size="1" noshade>
 <p>Basic Auth Benutzername </p>
@@ -364,7 +360,7 @@ input:focus{outline:none; border-color: #43d1ff;}
 <p>Kategorie</p>
 <div class="pgStandard"><input type="text" id="pgcategory" name="pgcategory" value="category = &quot;&quot;" hidden/><input class="large-input"t id="comb" value="&quot;&quot;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="category = " hidden/></div>
 <hr class="hr" size="1" noshade>
-<p>NZB pausiert zur Warteschlange hinzuf&uuml;gen</p>
+<p>NZB pausiert zur Warteschlange hinzufügen</p>
 <div class="pgStandard"><input type="text" id="pgaddpaused" name="pgaddpaused" value="addpaused = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="addpaused = false">false</option>
@@ -372,7 +368,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>Komprimierung beim Hochladen hinzuf&uuml;gen, entweder "none" oder "zip". N&uuml;tzlich wenn SABNZBD extern (Server, NAS, etc) l&auml;uft</p>
+<p>Komprimierung beim Hochladen hinzufügen, entweder "none" oder "zip". Nützlich wenn SABNZBD extern (Server, NAS, etc) läuft</p>
 <div class="pgStandard"><input type="text" id="pgcompression" name="pgcompression" value="compression = &quot;none&quot;" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="compression = &quot;none&quot;">none</option>
@@ -396,7 +392,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>SSL-Sicherheitspr&uuml;fungen &uuml;berspringen<br>(z. B. f&uuml;r selbstsignierte Zertifikate)</p>
+<p>SSL-Sicherheitsprüfungen überspringen<br>(z. B. für selbstsignierte Zertifikate)</p>
 <div class="pgStandard"><input type="text" id="pgskip_check_nget" name="pgskip_check_nget" value="skip_check = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_check = false">false</option>
@@ -415,7 +411,7 @@ input:focus{outline:none; border-color: #43d1ff;}
 <p>Kategorie</p>
 <div class="pgStandard"><input type="text" id="pgcategorynget" name="pgcategorynget" value="category = &quot;&quot;" hidden/><input class="large-input" id="comb" value="&quot;&quot;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="category = " hidden/></div>
 <hr class="hr" size="1" noshade>
-<p>NZB pausiert zur Warteschlange hinzuf&uuml;gen</p>
+<p>NZB pausiert zur Warteschlange hinzufügen</p>
 <div class="pgStandard"><input type="text" id="pgaddpausednget" name="pgaddpausednget" value="addpaused = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="addpaused = false">false</option>
@@ -439,7 +435,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>SSL-Sicherheitspr&uuml;fungen &uuml;berspringen<br>(z. B. f&uuml;r selbstsignierte Zertifikate)</p>
+<p>SSL-Sicherheitsprüfungen überspringen<br>(z. B. für selbstsignierte Zertifikate)</p>
 <div class="pgStandard"><input type="text" id="pgskip_check_syn" name="pgskip_check_syn" value="skip_check = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_check = false">false</option>
@@ -459,7 +455,7 @@ input:focus{outline:none; border-color: #43d1ff;}
 </div>
 <div id="nzbcheck" style="display:block;">
 <h1>NZBCheck</h1>
-<p>Fehlgeschlagene NZBs nicht &uuml;berspringen</p>
+<p>Fehlgeschlagene NZBs nicht überspringen</p>
 <div class="pgStandard"><input type="text" id="pgskip_failed" name="pgskip_failed" value="skip_failed = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip_failed = true">true</option>
@@ -496,17 +492,17 @@ input:focus{outline:none; border-color: #43d1ff;}
 <hr class="hr" size="1" noshade>
 <div id="categories" style="display:block;">
 <h1>KATEGORISIERER</h1>
-<p>Gib hier deine Kategorien und deine regul&auml;ren Ausdr&uuml;cke ein.</p>
+<p>Gib hier deine Kategorien und deine regulären Ausdrücke ein.</p>
 <p>Bitte entferne "#" wenn du die Kategorien nutzen willst</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgseries" name="pgseries" value="# series = (s\d+e\d+|s\d+ complete)"/></div>
 <div class="pgStandard"><input type="text" class="large-input" id="pgmovies" name="pgmovies" value="# movies = (x264|xvid|bluray|720p|1080p|untouched)"/></div>
-<div class="pgStandard"><input type="text" class="large-input" id="pgetc" name="pgetc" value="# Kategorie hinzuf&uuml;gen"/></div>
-<div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Kategorie hinzuf&uuml;gen"/></div>
-<div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Kategorie hinzuf&uuml;gen"/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc" name="pgetc" value="# Kategorie hinzufügen"/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Kategorie hinzufügen"/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Kategorie hinzufügen"/></div>
 </div>
 <div id="searchengines" style="display:block;">
 <h1>SUCHMASCHINEN</h1>
-<p style="margin-bottom:5px;">Werte zwischen 0 und 9 festlegen: 0 = deaktiviert, 1-9 = aktiviert, 1-9 sind auch die Reihenfolge, in der die Suchmaschinen verwendet werden. Es sind mehrere Server mit derselben Reihenfolgenummer zul&auml;ssig</p>
+<p style="margin-bottom:5px;">Werte zwischen 0 und 9 festlegen: 0 = deaktiviert, 1-9 = aktiviert, 1-9 sind auch die Reihenfolge, in der die Suchmaschinen verwendet werden. Es sind mehrere Server mit derselben Reihenfolgenummer zulässig</p>
 <p>NZBIndex aktivieren</p>
 <div class="pgStandard"><input type="text" id="pgnzbindex" name="pgnzbindex" value="nzbindex = 1" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -539,7 +535,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>NZB-Direktsuche aktivieren<br>(Einstellungen f&uuml;r die NZB-Direktsuche erforderlich)</p>
+<p>NZB-Direktsuche aktivieren<br>(Einstellungen für die NZB-Direktsuche erforderlich)</p>
 <div class="pgStandard"><input type="text" id="pgdirectsearch" name="pgdirectsearch" value="directsearch = 4" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="directsearch = 4"> 4 </option>
@@ -578,9 +574,9 @@ input:focus{outline:none; border-color: #43d1ff;}
 <p>Ihr Usenet-Kontopasswort</p>
 <div class="pgStandard"><input type="text" id="pgpassworddir" name="pgpassworddir" value="password = &quot;&quot;" hidden/><input class="large-input" id="comb" value="&quot;&quot;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
 <hr class="hr" size="1" noshade>
-<p style="margin-bottom:5px;">Experimentiere mit den Werten per Schieberegler um die beste Geschwindigkeit der Suche zu ermitteln. N&auml;heres dazu findet man in der<br><a href="https://github.com/Tensai75/nzb-monkey-go/wiki/%5BDIRECTSEARCH%5D" class="help" target="_blank">Online Hilfe (englisch)</a><br>Die Voreinstellungen sollten aber gut f&uuml;r die mei&szlig;ten Gegebenheiten passen.</p>
+<p style="margin-bottom:5px;">Experimentiere mit den Werten per Schieberegler um die beste Geschwindigkeit der Suche zu ermitteln. Näheres dazu findet man in der<br><a href="https://github.com/Tensai75/nzb-monkey-go/wiki/%5BDIRECTSEARCH%5D" class="help" target="_blank">Online Hilfe (englisch)</a><br>Die Voreinstellungen sollten aber gut für die meißten Gegebenheiten passen.</p>
 <hr class="hr" size="1" noshade>
-<p>Maximal zul&auml;ssige Verbindungen zu Ihrem Usenet-Server<br>(Standard = 20)</p>
+<p>Maximal zulässige Verbindungen zu Ihrem Usenet-Server<br>(Standard = 20)</p>
 <div class="pgStandard"><input type="text" id="pgconnections" name="pgconnections" value="connections = 20" readonly/>
 <!-- Comment this out for manual parameter input : -->
     <input type="range" step="5" min="5" max="100" value="20" class="slider" oninput="combine(event);"/>
@@ -590,20 +586,20 @@ input:focus{outline:none; border-color: #43d1ff;}
      <input type="text" value="connections = " hidden/> -->
 </div>
 <hr class="hr" size="1" noshade>
-<p>Anzahl der Stunden, die ab dem angegebenen Datum zur&uuml;ckgesucht werden sollen (Standard = 4)</p>
-<div class="pgStandard"><input type="text" id="pghours" name="pghours" value="hours = 4" readonly/>
+<p>Anzahl der Stunden, die ab dem angegebenen Datum zurückgesucht werden sollen (Standard = 12)</p>
+<div class="pgStandard"><input type="text" id="pghours" name="pghours" value="hours = 12" readonly/>
 <!-- Comment this out for manual parameter input : -->
-    <input type="range" step="1" min="2" max="24" value="4" class="slider" oninput="combine(event);"/>
+    <input type="range" step="1" min="2" max="24" value="12" class="slider" oninput="combine(event);"/>
     <input type="text" value="hours = " hidden/>
 <!-- Comment this in for manual input :
      <input id="comb" value="20" style="margin-left:-200px; width:140px;" oninput="combine(event);"/>
      <input type="text" value="hours = " hidden/> -->
 </div>
 <hr class="hr" size="1" noshade>
-<p>Anzahl der Stunden, die ab dem angegebenen Datum vorw&auml;rts gesucht werden sollen (Standard = 4)</p>
-<div class="pgStandard"><input type="text" id="pgforward_hours" name="pgforward_hours" value="forward_hours = 4" readonly/>
+<p>Anzahl der Stunden, die ab dem angegebenen Datum vorwärts gesucht werden sollen (Standard = 12)</p>
+<div class="pgStandard"><input type="text" id="pgforward_hours" name="pgforward_hours" value="forward_hours = 12" readonly/>
 <!-- Comment this out for manual parameter input : -->
-    <input type="range" step="1" min="2" max="24" value="4" class="slider" oninput="combine(event);"/>
+    <input type="range" step="1" min="2" max="24" value="12" class="slider" oninput="combine(event);"/>
     <input type="text" value="forward_hours = " hidden/>
 <!-- Comment this in for manual parameter input :
      <input id="comb" value="20" style="margin-left:-148px; width:110px;" oninput="combine(event);"/>
@@ -620,7 +616,7 @@ input:focus{outline:none; border-color: #43d1ff;}
     <input type="text" value="step = " hidden/> -->
 </div>
 <hr class="hrr" size="1" noshade>
-<p>Legt die Anzahl der Sekunden fest, nach denen eine &Uuml;bersichtsanforderung als blockiert gilt (Standart = 5).</p>
+<p>Legt die Anzahl der Sekunden fest, nach denen eine Übersichtsanforderung als blockiert gilt (Standart = 5).</p>
 <div class="pgStandard"><input type="text" id="pgovtimeout" name="pgovtimeout" value="overview_timeout = 5" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="overview_timeout = 5"> 5 </option>
@@ -629,7 +625,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p>Legt die Anzahl der Wiederholungsversuche fest, wenn eine &Uuml;bersichtsanforderung blockiert ist (Standart = 3)</p>
+<p>Legt die Anzahl der Wiederholungsversuche fest, wenn eine Übersichtsanforderung blockiert ist (Standart = 3)</p>
 <div class="pgStandard"><input type="text" id="pgovretries" name="pgovretries" value="overview_retries = 3" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="overview_retries = 3"> 3 </option>
@@ -638,7 +634,7 @@ input:focus{outline:none; border-color: #43d1ff;}
      </select>
      </div>
 <hr class="hr" size="1" noshade>
-<p>Direkte Suche &uuml;berspringen, wenn best_nzb verwendet wird und bereits eine gute NZB-Datei gefunden wurde</p>
+<p>Direkte Suche überspringen, wenn best_nzb verwendet wird und bereits eine gute NZB-Datei gefunden wurde</p>
 <div class="pgStandard"><input type="text" id="pgskipdir" name="pgskipdir" value="skip = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="skip = true">true</option>
@@ -657,8 +653,8 @@ input:focus{outline:none; border-color: #43d1ff;}
 </div>
 </form>
 <div class="buttons" align="center">
-<a class="button tooltip" onclick="getData()">Erstellen</a> ==>
-<a class="button" onclick="safeConfig()">Speichern</a> ==>
+<a class="button tooltip" onclick="getData()">Erstellen</a> <i class="arrow"></i>
+<a class="button" onclick="safeConfig()">Speichern</a> <i class="arrow"></i>
 <a class="button" onclick="clearConfig()">Reset</a>
 </div>
 <div style="display:block;" id="pgconfig"></div>
@@ -782,7 +778,7 @@ function clearConfig() {
   scrollToTop();
 }
 function changeStyle() {
-  let elements = document.querySelectorAll('body, .container , input , h1 , h2, .cat');
+  let elements = document.querySelectorAll('body, .container , .slider, input , h1 , h2, .cat, .help');
   let changeStyle = document.querySelector("#changestyle");
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
