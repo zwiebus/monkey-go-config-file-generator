@@ -207,7 +207,7 @@ option {min-width:40px;}
 .changebg {float:right;margin-right:20px;width:50px;text-align:center;}
 #pgseries, #pgmovies, #pgetc, #pgetc2 {margin-bottom:5px;}
 .cat, .copy {color:#43d1ff;}
-.copy {position:relative;right:10px;bottom:-5px;float:right;}
+.dl {float:right;margin-right:20px;top:0;}
 .hrl {margin-left:-10px;margin-right:20px;}
 .hrr {margin-right:-10px;}
 .slider {-webkit-appearance:none;position:relative;top:6px;margin:0 0 10px 0;width:232px;height:19px;border:none;background:transparent;display:block;}
@@ -224,6 +224,7 @@ option {min-width:40px;}
 <body>
 <div class="container">
 <span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Check for new releases" target="_blank">Version 2.0.2</a>
 <h2>Create Nzb-Monkey-Go config file</h2>
 <span>To create only NZB files and save them in a folder, simply specify the nzbsavepath <font color="#FF0000">&#9733;</font> under <span class="cat">EXECUTE</span>. For the most successful search, however, you should definitely configure <a class="cat" href="#directsearch">DIRECTSEARCH</a>. Otherwise, select the values required for your setup. For input fields without selections and with quotation marks, the information must always be enclosed in "|".</span>
 <form id="pg" name="pg">
