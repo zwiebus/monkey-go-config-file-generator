@@ -202,7 +202,7 @@ input:focus{outline:none; border-color: #43d1ff;}
 .changebg {float:right;margin-right:20px;width:50px;text-align:center;}
 #pgseries, #pgmovies, #pgetc, #pgetc2 {margin-bottom:5px;}
 .cat {color:#43d1ff;}
-.copy {position:relative;right:10px;bottom:-5px;float:right;}
+.dl {float:right;margin-right:20px;top:0;}
 .hr {margin:5px 0;}
 .slider {-webkit-appearance:none;position:relative;top:8px;margin:0 0 10px 0;width:232px;height:25px;border:none;background:transparent;display:block;}
 .slider::-webkit-slider-runnable-track {width:232px;height:6px;border:none;border-radius:3px;background:#F0F8FF;box-shadow: 1px 1px 1px #000, 0px 0px 1px #0d0d0d;}
@@ -219,6 +219,7 @@ input:focus{outline:none; border-color: #43d1ff;}
 <body>
 <div class="container">
 <span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Webseite auf neue Version prüfen" target="_blank">Version 2.0.2</a>
 <h2>Monkey-Go Config-Datei erstellen</h2>
 <span>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. Für eine möglichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten wähle die für dein Setup benötigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anführungszeichen müssen die Angaben immer zwischen diese eingefügt werden "|".</span>
 <form id="pg" name="pg">
