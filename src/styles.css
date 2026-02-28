@@ -167,14 +167,13 @@ input:focus {
 #pgseries, #pgmovies, #pgetc, #pgetc2 {
   margin-bottom: 5px;
 }
-.cat, copy {
+.cat {
   color: #43d1ff;
 }
-.copy {
-  position: relativee;
-  right: 10px;
-  bottom: -5px;
-  float: right;
+.dl {
+  float:right;
+  margin-right:20px;
+  top:0;
 }
 .hrl {
   margin-left: -10px;
@@ -256,3 +255,4 @@ input:focus {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
+
