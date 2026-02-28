@@ -205,8 +205,8 @@ input:focus{outline:none;border-color:#43d1ff;}
 .buttons {margin-top:20px;}
 .changebg {float:right;margin-right:20px;width:50px;text-align:center;}
 #pgseries, #pgmovies, #pgetc, #pgetc2 {margin-bottom:5px;}
-.cat, .copy {color:#43d1ff;}
-.copy {position:relative;right:10px;bottom:-5px;float:right;}
+.cat {color:#43d1ff;}
+.dl {float:right;margin-right:20px;top:0;}
 .hrl {margin-left:-10px;margin-right:20px;}
 .hrr {margin-right:-10px;}
 .slider {-webkit-appearance:none;position:relative;top:6px;margin:0 0 10px 0;width:232px;height:19px;border:none;background:transparent;display:block;}
@@ -224,6 +224,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <body>
 <div class="container">
 <span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Webseite auf neue Version prüfen" target="_blank">Version 2.0.2</a>
 <h2>Nzb-Monkey-Go Config-Datei erstellen</h2>
 <p>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. Für eine möglichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten wähle die für dein Setup benötigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anführungszeichen müssen die Angaben immer zwischen diese eingefügt werden "|".</p>
 <form id="pg" name="pg">
@@ -669,7 +670,6 @@ input:focus{outline:none;border-color:#43d1ff;}
 <a class="button" onclick="clearConfig()">Reset</a>
 </div>
 <div style="display:block;" id="pgconfig"></div>
-<!-- <div class="copy">&copy; zwiebus</div>  -->
 </div>
 <script>
 const dropdown = document.getElementById("select_target");
