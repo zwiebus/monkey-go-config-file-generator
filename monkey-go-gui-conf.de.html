@@ -1,7 +1,7 @@
 <!--
  * @package monkey-go-config-file-generator
- * @author TENSAI
  * @author zwiebus
+ * @author TENSAI
 -->
 <!doctype html>
 <html lang="en">
@@ -129,8 +129,17 @@ let template = {};
 %pgnzbking%
 # Enable Binsearch
 %pgbinsearch%
+# Enable easynews search (settings for the easynews search engine required)
+%pgeasynews%
 # Enable nzb direct search (settings for the nzb direct search required)
 %pgdirectsearch%
+
+# Settings for the easynews search engine
+[EASYNEWS]
+# Defines the username of your Easynews account
+%pgeasyusername%
+# Defines the password of your Easynews account
+%pgeasypassword%
 
 # Settings for the nzb direct search
 [DIRECTSEARCH]
@@ -152,14 +161,20 @@ let template = {};
 %pgforward_hours%
 # Number of articles to load per scan (default = 20000)
 %pgstep%
-# Defines the number of seconds after which an overview request is considered stalled (default = 5).
+# Defines the number of seconds after which an overview request is considered stalled (default = 5)
 %pgovtimeout%
-# Defines the number of retry attempts when an overview request is stalled (default = 3).
+# Defines the number of retry attempts when an overview request is stalled (default = 3)
 %pgovretries%
 # Skip direct search when using best_nzb and a good NZB file has already been found
 %pgskipdir%
 # Search only in the first group if several groups are provided
 %pgfirst_group_only%
+# Defines whether ANSI codes are used to display the progress bar (default = true)
+%pgansycodes%
+# Defines whether the message counter is displayed in the progress bar during the message scan (default = true)
+%pgshowcounter%
+# Defines whether the direct search is limited to one instance at a time (default = true)
+%pginstance%
 `;
 </script>
 <style>
@@ -509,8 +524,6 @@ input:focus{outline:none;border-color:#43d1ff;}
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Kategorie hinzufügen"/></div>
 </div>
 <hr class="hrl" size="1" noshade>
-</div>
-<div class="column">
 <div id="searchengines" style="display:block;">
 <h1>SUCHMASCHINEN</h1>
 <p style="margin-bottom:5px;">Werte zwischen 0 und 9 festlegen: 0 = deaktiviert, 1-9 = aktiviert, 1-9 sind auch die Reihenfolge, in der die Suchmaschinen verwendet werden. Es sind mehrere Server mit derselben Reihenfolgenummer zulässig</p>
@@ -521,10 +534,11 @@ input:focus{outline:none;border-color:#43d1ff;}
       <option value="nzbindex =  2"> 2 </option>
       <option value="nzbindex =  3"> 3 </option>
       <option value="nzbindex =  4"> 4 </option>
+      <option value="nzbindex =  5"> 5 </option>
       <option value="nzbindex =  0"> 0 </option>
      </select>
      </div>
-<hr class="hrr" size="1" noshade>
+<hr class="hrl" size="1" noshade>
 <p>NZBKing aktivieren</p>
 <div class="pgStandard"><input type="text" id="pgnzbking" name="pgnzbking" value="nzbking = 2" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -532,9 +546,10 @@ input:focus{outline:none;border-color:#43d1ff;}
       <option value="nzbking =  1"> 1 </option>
       <option value="nzbking =  3"> 3 </option>
       <option value="nzbking =  4"> 4 </option>
+      <option value="nzbking =  5"> 5 </option>
       <option value="nzbking =  0"> 0 </option>
      </select></div>
-<hr class="hrr" size="1" noshade>
+<hr class="hrl" size="1" noshade>
 <p>Binsearch aktivieren</p>
 <div class="pgStandard"><input type="text" id="pgbinsearch" name="pgbinsearch" value="binsearch = 3" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -542,21 +557,47 @@ input:focus{outline:none;border-color:#43d1ff;}
       <option value="binsearch =  1"> 1 </option>
       <option value="binsearch =  2"> 2 </option>
       <option value="binsearch =  4"> 4 </option>
+      <option value="binsearch =  5"> 5 </option>
       <option value="binsearch =  0"> 0 </option>
      </select>
-     </div>
-<hr class="hrr" size="1" noshade>
-<p>NZB-Direktsuche aktivieren<br>(Einstellungen für die NZB-Direktsuche erforderlich)</p>
-<div class="pgStandard"><input type="text" id="pgdirectsearch" name="pgdirectsearch" value="directsearch = 4" readonly/>
+</div>
+<hr class="hrl" size="1" noshade>
+<p>Easynews Suche aktivieren</p>
+<p>(Einstellungen für die Easynews Suche erforderlich)</p>
+<div class="pgStandard"><input type="text" id="pgeasynews" name="pgeasynews" value="easynews = 4" readonly/>
      <select class="select" onchange="changeValue(event);">
-      <option value="directsearch = 4"> 4 </option>
+      <option value="easynews =  4"> 4 </option>
+      <option value="easynews =  1"> 1 </option>
+      <option value="easynews =  2"> 2 </option>
+      <option value="easynews =  3"> 3 </option>
+      <option value="easynews =  5"> 5 </option>
+      <option value="easynews =  0"> 0 </option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade>
+<p>NZB-Direktsuche aktivieren<br>(Einstellungen für die NZB-Direktsuche erforderlich)</p>
+<div class="pgStandard"><input type="text" id="pgdirectsearch" name="pgdirectsearch" value="directsearch = 5" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="directsearch = 5"> 5 </option>
       <option value="directsearch = 1"> 1 </option>
       <option value="directsearch = 2"> 2 </option>
       <option value="directsearch = 3"> 3 </option>
+      <option value="directsearch = 4"> 4 </option>
       <option value="directsearch = 0"> 0 </option>
      </select>
-     </div>
+    </div>
+ </div>
+<hr class="hrl" size="1" noshade>
 </div>
+<div class="column">
+<div id="easynews" style="display:block;">
+<h1>EASYNEWS SUCHE</h1>
+<p style="margin-bottom:5px;">In diesem Abschnitt werden die Einstellungen für die Easynews-Suchmaschine festgelegt. Die Easynews-Suchmaschine muss im Abschnitt [SEARCHENGINES] aktiviert werden, indem "easynews" eine Prioritätsnummer zwischen 1 und 9 zugewiesen wird. Die Easynews-Suchmaschine funktioniert nur, wenn die korrekten Anmeldedaten für ein Easynews-Konto angegeben werden.</p>
+<p>Benutzername Ihres Easynews-Kontos</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgeasyusername" name="pgeasyusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="username = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Ihr Easynews-Kontopasswort</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgeasypassword" name="pgeasypassword" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
 <hr class="hrr" size="1" noshade>
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIREKTSUCHE</h1>
@@ -661,9 +702,35 @@ input:focus{outline:none;border-color:#43d1ff;}
       <option value="first_group_only = false">false</option>
      </select>
      </div>
-</div>
+     <hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">Dieser Parameter legt fest, ob zur Darstellung des Fortschrittsbalkens ANSI-Codes verwendet werden. Die Verwendung von ANSI-Codes sorgt für eine flüssigere Darstellung und verringert das Flackern, wird jedoch möglicherweise nicht von allen Terminals unterstützt.</p>
+<div class="pgStandard"><input type="text" id="pgansycodes" name="pgansycodes" value="use_ansi_codes = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="use_ansi_codes = true">true</option>
+      <option value="use_ansi_codes = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">Dieser Parameter legt fest, ob der Nachrichtenzähler während des Nachrichten-Scans in der Fortschrittsanzeige angezeigt wird.</p>
+<div class="pgStandard"><input type="text" id="pgshowcounter" name="pgshowcounter" value="show_counter = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="show_counter = true">true</option>
+      <option value="show_counter = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">Dieser Parameter legt fest, ob die direkte Suche auf jeweils eine Instanz beschränkt ist.
+Durch die Beschränkung der direkten Suche auf jeweils eine Instanz werden Fehlermeldungen wegen "zu vieler Verbindungen" vermieden, wenn mehrere Suchvorgänge gleichzeitig gestartet werden.</p>
+<div class="pgStandard"><input type="text" id="pginstance" name="pginstance" value="one_instance_only = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="one_instance_only = true">true</option>
+      <option value="one_instance_only = false">false</option>
+     </select>
+     </div>
+  </div>
 </div>
 </form>
+</div>
 <br style="clear:both;">
 <div class="buttons" align="center">
 <a class="button" onclick="getData()">Erstellen</a> <i class="arrow"></i>
