@@ -1,7 +1,7 @@
 <!--
  * @package monkey-go-config-file-generator
- * @author TENSAI
  * @author zwiebus
+ * @author TENSAI
 -->
 <!doctype html>
 <html lang="en">
@@ -129,8 +129,17 @@ let template = {};
 %pgnzbking%
 # Enable Binsearch
 %pgbinsearch%
+# Enable easynews search (settings for the easynews search engine required)
+%pgeasynews%
 # Enable nzb direct search (settings for the nzb direct search required)
 %pgdirectsearch%
+
+# Settings for the easynews search engine
+[EASYNEWS]
+# Defines the username of your Easynews account
+%pgeasyusername%
+# Defines the password of your Easynews account
+%pgeasypassword%
 
 # Settings for the nzb direct search
 [DIRECTSEARCH]
@@ -152,14 +161,20 @@ let template = {};
 %pgforward_hours%
 # Number of articles to load per scan (default = 20000)
 %pgstep%
-# Defines the number of seconds after which an overview request is considered stalled (default = 5).
+# Defines the number of seconds after which an overview request is considered stalled (default = 5)
 %pgovtimeout%
-# Defines the number of retry attempts when an overview request is stalled (default = 3).
+# Defines the number of retry attempts when an overview request is stalled (default = 3)
 %pgovretries%
 # Skip direct search when using best_nzb and a good NZB file has already been found
 %pgskipdir%
 # Search only in the first group if several groups are provided
 %pgfirst_group_only%
+# Defines whether ANSI codes are used to display the progress bar (default = true)
+%pgansycodes%
+# Defines whether the message counter is displayed in the progress bar during the message scan (default = true)
+%pgshowcounter%
+# Defines whether the direct search is limited to one instance at a time (default = true)
+%pginstance%
 `;
 </script>
 <style>
@@ -509,55 +524,80 @@ option {min-width:40px;}
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Add category"></div>
 </div>
 <hr class="hrl" size="1" noshade="">
-</div>
-<div class="column">
 <div id="searchengines" style="display:block;">
 <h1>SEARCHENGINES</h1>
 <p style="margin-bottom:5px;">Set values between 0 and 9: 0 = disabled, 1-9 = enabled, 1-9 also represents the order in which the search engines are used. Multiple servers with the same order number are allowed.</p>
 <p>Activate NZBIndex</p>
 <div class="pgStandard"><input type="text" id="pgnzbindex" name="pgnzbindex" value="nzbindex = 1" readonly/>
      <select class="select" onchange="changeValue(event);">
-      <option value="nzbindex =  1">1</option>
-      <option value="nzbindex =  2">2</option>
-      <option value="nzbindex =  3">3</option>
-      <option value="nzbindex =  4">4</option>
-      <option value="nzbindex =  0">0</option>
+      <option value="nzbindex =  1"> 1 </option>
+      <option value="nzbindex =  2"> 2 </option>
+      <option value="nzbindex =  3"> 3 </option>
+      <option value="nzbindex =  4"> 4 </option>
+      <option value="nzbindex =  5"> 5 </option>
+      <option value="nzbindex =  0"> 0 </option>
      </select>
      </div>
 <hr class="hrr" size="1" noshade="">
 <p>Activate NZBKing</p>
 <div class="pgStandard"><input type="text" id="pgnzbking" name="pgnzbking" value="nzbking = 2" readonly/>
      <select class="select" onchange="changeValue(event);">
-      <option value="nzbking =  2">2</option>
-      <option value="nzbking =  1">1</option>
-      <option value="nzbking =  3">3</option>
-      <option value="nzbking =  4">4</option>
-      <option value="nzbking =  0">0</option>
+      <option value="nzbking =  2"> 2 </option>
+      <option value="nzbking =  1"> 1</option>
+      <option value="nzbking =  3"> 3 </option>
+      <option value="nzbking =  4"> 4 </option>
+      <option value="nzbking =  5"> 5 </option>
+      <option value="nzbking =  0"> 0 </option>
      </select></div>
 <hr class="hrr" size="1" noshade="">
 <p>Activate Binsearch</p>
 <div class="pgStandard"><input type="text" id="pgbinsearch" name="pgbinsearch" value="binsearch = 3" readonly/>
      <select class="select" onchange="changeValue(event);">
-      <option value="binsearch =  3">3</option>
-      <option value="binsearch =  1">1</option>
-      <option value="binsearch =  2">2</option>
-      <option value="binsearch =  4">4</option>
-      <option value="binsearch =  0">0</option>
+      <option value="binsearch =  3"> 3 </option>
+      <option value="binsearch =  1"> 1 </option>
+      <option value="binsearch =  2"> 2 </option>
+      <option value="binsearch =  4"> 4 </option>
+      <option value="binsearch =  5"> 5 </option>
+      <option value="binsearch =  0"> 0 </option>
      </select>
      </div>
-<hr class="hrr" size="1" noshade="">
-<p>Enable NZB direct search <br>(NZB direct search settings required)</p>
-<div class="pgStandard"><input type="text" id="pgdirectsearch" name="pgdirectsearch" value="directsearch = 4" readonly/>
+<hr class="hrl" size="1" noshade>
+<p>Enable easynews search engine<br>(Easynews Search settings required)</p>
+<div class="pgStandard"><input type="text" id="pgeasynews" name="pgeasynews" value="easynews = 4" readonly/>
      <select class="select" onchange="changeValue(event);">
-      <option value="directsearch = 4">4</option>
-      <option value="directsearch = 1">1</option>
-      <option value="directsearch = 2">2</option>
-      <option value="directsearch = 3">3</option>
-      <option value="directsearch = 0">0</option>
+      <option value="easynews =  4"> 4 </option>
+      <option value="easynews =  1"> 1 </option>
+      <option value="easynews =  2"> 2 </option>
+      <option value="easynews =  3"> 3 </option>
+      <option value="easynews =  5"> 5 </option>
+      <option value="easynews =  0"> 0 </option>
      </select>
      </div>
+<hr class="hrl" size="1" noshade>
+<p>Enable NZB direct search <br>(NZB direct search settings required)</p>
+<div class="pgStandard"><input type="text" id="pgdirectsearch" name="pgdirectsearch" value="directsearch = 5" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="directsearch = 5"> 5 </option>
+      <option value="directsearch = 1"> 1 </option>
+      <option value="directsearch = 2"> 2 </option>
+      <option value="directsearch = 3"> 3 </option>
+      <option value="diectsearch =  4"> 4 </option>
+      <option value="directsearch = 0"> 0 </option>
+     </select>
+    </div>
+ </div>
+<hr class="hrl" size="1" noshade>
 </div>
-<hr class="hrr" size="1" noshade="">
+<div class="column">
+<div id="easynews" style="display:block;">
+<h1>EASYNEWS SEARCH</h1>
+<p style="margin-bottom:5px;">This section defines the settings for Easynews search engine. The Easynews search engine must be activated in the [SEARCHENGINES] by giving "easynews" a priority number between 1-9. The Easynews search engine only works if the proper login details for an Easynews account are specified.</p>
+<p>Username of your Easynews account</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgeasyusername" name="pgeasyusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="username = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Password of your Easynews account</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgeasypassword" name="pgeasypassword" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
+<hr class="hrr" size="1" noshade>
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIRECTSEARCH</h1>
 <p>Hostname of your Usenet server</p>
@@ -662,9 +702,34 @@ However, the default settings should work good for most conditions.</p>
       <option value="first_group_only = false">false</option>
      </select>
      </div>
-</div>
+     <hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">This parameter defines whether ANSI codes are used to display the progress bar. The use of ANSI codes ensures a smoother display and reduces flickering, but may not be supported by all terminals..</p>
+<div class="pgStandard"><input type="text" id="pgansycodes" name="pgansycodes" value="use_ansi_codes = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="use_ansi_codes = true">true</option>
+      <option value="use_ansi_codes = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">This parameter defines whether the message counter is displayed in the progress bar during the message scan.</p>
+<div class="pgStandard"><input type="text" id="pgshowcounter" name="pgshowcounter" value="show_counter = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="show_counter = true">true</option>
+      <option value="show_counter = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">This parameter defines whether the direct search is limited to one instance at a time. Limiting the direct search to one instance at a time prevents "too many connection" errors if multiple searches are started simultaneously.</p>
+<div class="pgStandard"><input type="text" id="pginstance" name="pginstance" value="one_instance_only = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="one_instance_only = true">true</option>
+      <option value="one_instance_only = false">false</option>
+     </select>
+     </div>
+  </div>
 </div>
 </form>
+</div>
 <br style="clear:both;">
 <div class="buttons" align="center">
 <a class="button tooltip" onclick="getData()">Create</a> <i class="arrow"></i>
