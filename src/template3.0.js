@@ -131,6 +131,10 @@ let template = {};
 %pgeasyusername%
 # Defines the password of your Easynews account
 %pgeasypassword%
+# Defines whether keyword search or subject search will be used
+%pgsubjectonly%
+# Defines whether newest or oldest result will be used
+%pgoldestresult%
 
 # Settings for the nzb direct search
 [DIRECTSEARCH]
