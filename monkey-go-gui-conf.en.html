@@ -140,6 +140,10 @@ let template = {};
 %pgeasyusername%
 # Defines the password of your Easynews account
 %pgeasypassword%
+# Defines whether keyword search or subject search will be used
+%pgsubjectonly%
+# Defines whether newest or oldest result will be used
+%pgoldestresult%
 
 # Settings for the nzb direct search
 [DIRECTSEARCH]
@@ -240,9 +244,9 @@ option {min-width:40px;}
 <body>
 <div class="container">
 <span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
-<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Check for new releases" target="_blank">Version 2.0.3</a>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Check for new releases" target="_blank">Version 2.0.32</a><a href="https://github.com/Tensai75/nzb-monkey-go/wiki/" class="dl button" title="Nzb-monkey-Go Wiki" target="_blank">Online Help</a>
 <h2>Create Nzb-Monkey-Go config file</h2>
-<span>To create only NZB files and save them in a folder, simply specify the nzbsavepath <font color="#FF0000">&#9733;</font> under <span class="cat">EXECUTE</span>. For the most successful search, however, you should definitely configure <a class="cat" href="#directsearch">DIRECTSEARCH</a>. Otherwise, select the values required for your setup. For input fields without selections and with quotation marks, the information must always be enclosed in "|".</span>
+<p>To create only NZB files and save them in a folder, simply specify the nzbsavepath <font color="#FF0000">&#9733;</font> under <span class="cat">EXECUTE</span>. For the most successful search, however, you should definitely configure <a class="cat" href="#directsearch">DIRECTSEARCH</a>. Otherwise, select the values required for your setup. For input fields without selections and with quotation marks, the information must always be enclosed in "|".</p>
 <form id="pg" name="pg">
 <div class="column">
 <h1>GENERAL</h1>
@@ -538,7 +542,7 @@ option {min-width:40px;}
       <option value="nzbindex =  0"> 0 </option>
      </select>
      </div>
-<hr class="hrr" size="1" noshade="">
+<hr class="hrl" size="1" noshade="">
 <p>Activate NZBKing</p>
 <div class="pgStandard"><input type="text" id="pgnzbking" name="pgnzbking" value="nzbking = 2" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -549,7 +553,7 @@ option {min-width:40px;}
       <option value="nzbking =  5"> 5 </option>
       <option value="nzbking =  0"> 0 </option>
      </select></div>
-<hr class="hrr" size="1" noshade="">
+<hr class="hrl" size="1" noshade="">
 <p>Activate Binsearch</p>
 <div class="pgStandard"><input type="text" id="pgbinsearch" name="pgbinsearch" value="binsearch = 3" readonly/>
      <select class="select" onchange="changeValue(event);">
@@ -591,12 +595,28 @@ option {min-width:40px;}
 <div class="column">
 <div id="easynews" style="display:block;">
 <h1>EASYNEWS SEARCH</h1>
-<p style="margin-bottom:5px;">This section defines the settings for Easynews search engine. The Easynews search engine must be activated in the [SEARCHENGINES] by giving "easynews" a priority number between 1-9. The Easynews search engine only works if the proper login details for an Easynews account are specified.</p>
+<p style="margin-bottom:5px;">This section defines the settings for Easynews search engine. The Easynews search engine must be activated in the <a class="cat" href="#searchengines">SEARCHENGINES</a>.</p>
 <p>Username of your Easynews account</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgeasyusername" name="pgeasyusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="username = " hidden/></div>
 <hr class="hrr" size="1" noshade>
 <p>Password of your Easynews account</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgeasypassword" name="pgeasypassword" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Use the keyword or subject search. If set to "true", only the subjects are searched, which may result in fewer incorrect results but will not find hidden uploads.</p>
+<div class="pgStandard"><input type="text" id="pgsubjectonly" name="pgsubjectonly" value="subject_search_only = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="subject_search_only = false">false</option>
+      <option value="subject_search_only = true">true</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p>Use the most recent or oldest result. If set to "true", the oldest result is used instead of the most recent one.</p>
+<div class="pgStandard"><input type="text" id="pgoldestresult" name="pgoldestresult" value="oldest_result = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="oldest_result = false">false</option>
+      <option value="oldest_result = true">true</option>
+     </select>
+     </div>
 <hr class="hrr" size="1" noshade>
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIRECTSEARCH</h1>
@@ -626,7 +646,7 @@ option {min-width:40px;}
 <p>Your Usenet account password</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgpassworddir" name="pgpassworddir" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="password = " hidden/></div>
 <hr class="hrr" size="1" noshade="">
-<p style="margin-bottom:5px;">Experiment with the values using the sliders to determine the best search speed.<br>You can find more information on this in the <a href="https://github.com/Tensai75/nzb-monkey-go/wiki/%5BDIRECTSEARCH%5D" class="help" target="_blank">Online Help</a><br>
+<p style="margin-bottom:5px;">Experiment with the values using the sliders to determine the best search speed.<br>
 However, the default settings should work good for most conditions.</p>
 <hr class="hrr" size="1" noshade>
 <p>Maximum allowed connections to your Usenet server <br>(default = 20)</p>
@@ -703,7 +723,7 @@ However, the default settings should work good for most conditions.</p>
      </select>
      </div>
      <hr class="hrr" size="1" noshade>
-<p style="margin-bottom:5px;">This parameter defines whether ANSI codes are used to display the progress bar. The use of ANSI codes ensures a smoother display and reduces flickering, but may not be supported by all terminals..</p>
+<p style="margin-bottom:5px;">Use ANSI codes to display the progress bar. The use of ANSI codes ensures a smoother display and reduces flickering, but may not be supported by all terminals..</p>
 <div class="pgStandard"><input type="text" id="pgansycodes" name="pgansycodes" value="use_ansi_codes = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="use_ansi_codes = true">true</option>
@@ -711,7 +731,7 @@ However, the default settings should work good for most conditions.</p>
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p style="margin-bottom:5px;">This parameter defines whether the message counter is displayed in the progress bar during the message scan.</p>
+<p style="margin-bottom:5px;">Display the message counter in the progress bar during the message scan.</p>
 <div class="pgStandard"><input type="text" id="pgshowcounter" name="pgshowcounter" value="show_counter = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="show_counter = true">true</option>
@@ -719,7 +739,7 @@ However, the default settings should work good for most conditions.</p>
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p style="margin-bottom:5px;">This parameter defines whether the direct search is limited to one instance at a time. Limiting the direct search to one instance at a time prevents "too many connection" errors if multiple searches are started simultaneously.</p>
+<p style="margin-bottom:5px;">Limit the direct search to one instance at a time. Limiting to one instance at a time prevents "too many connection" errors if multiple searches are started simultaneously.</p>
 <div class="pgStandard"><input type="text" id="pginstance" name="pginstance" value="one_instance_only = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="one_instance_only = true">true</option>
