@@ -140,6 +140,10 @@ let template = {};
 %pgeasyusername%
 # Defines the password of your Easynews account
 %pgeasypassword%
+# Defines whether keyword search or subject search will be used
+%pgsubjectonly%
+# Defines whether newest or oldest result will be used
+%pgoldestresult%
 
 # Settings for the nzb direct search
 [DIRECTSEARCH]
@@ -240,7 +244,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <body>
 <div class="container">
 <span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
-<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Webseite auf neue Version prüfen" target="_blank">Version 2.0.3</a>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Webseite auf neue Version prüfen" target="_blank">Version 2.0.32</a><a href="https://github.com/Tensai75/nzb-monkey-go/wiki/" class="dl button" title="Nzb-monkey-Go Wiki" target="_blank">Online Hilfe (englisch)</a>
 <h2>Nzb-Monkey-Go Config-Datei erstellen</h2>
 <p>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. Für eine möglichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten wähle die für dein Setup benötigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anführungszeichen müssen die Angaben immer zwischen diese eingefügt werden "|".</p>
 <form id="pg" name="pg">
@@ -592,12 +596,28 @@ input:focus{outline:none;border-color:#43d1ff;}
 <div class="column">
 <div id="easynews" style="display:block;">
 <h1>EASYNEWS SUCHE</h1>
-<p style="margin-bottom:5px;">In diesem Abschnitt werden die Einstellungen für die Easynews-Suchmaschine festgelegt. Die Easynews-Suchmaschine muss im Abschnitt [SEARCHENGINES] aktiviert werden, indem "easynews" eine Prioritätsnummer zwischen 1 und 9 zugewiesen wird. Die Easynews-Suchmaschine funktioniert nur, wenn die korrekten Anmeldedaten für ein Easynews-Konto angegeben werden.</p>
+<p style="margin-bottom:5px;">In diesem Abschnitt werden die Einstellungen für die Easynews-Suchmaschine festgelegt. Die Easynews-Suchmaschine muss im Abschnitt <a class="cat" href="#searchengines">SUCHMASCHINEN</a> aktiviert sein.</p>
 <p>Benutzername Ihres Easynews-Kontos</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgeasyusername" name="pgeasyusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="username = " hidden/></div>
 <hr class="hrr" size="1" noshade>
 <p>Ihr Easynews-Kontopasswort</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgeasypassword" name="pgeasypassword" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Keyword oder die Subject-Suche verwenden. Bei der Einstellung "true" werden nur die Subjects durchsucht, was zwar zu weniger falschen Ergebnissen führen kann, verschleierte Uploads jedoch nicht findet.</p>
+<div class="pgStandard"><input type="text" id="pgsubjectonly" name="pgsubjectonly" value="subject_search_only = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="subject_search_only = false">false</option>
+      <option value="subject_search_only = true">true</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p>Neuestes oder ältestes Ergebnis verwenden. Bei der Einstellung "true" wird das älteste Ergebnis anstelle des neuesten verwendet.</p>
+<div class="pgStandard"><input type="text" id="pgoldestresult" name="pgoldestresult" value="oldest_result = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="oldest_result = false">false</option>
+      <option value="oldest_result = true">true</option>
+     </select>
+     </div>
 <hr class="hrr" size="1" noshade>
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIREKTSUCHE</h1>
@@ -627,7 +647,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <p>Ihr Usenet-Kontopasswort</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgpassworddir" name="pgpassworddir" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
 <hr class="hrr" size="1" noshade>
-<p>Experimentiere mit den Werten per Schieberegler um die beste Geschwindigkeit der Suche zu ermitteln. Näheres dazu findet man in der <a href="https://github.com/Tensai75/nzb-monkey-go/wiki/%5BDIRECTSEARCH%5D" class="help" target="_blank">Online Hilfe (englisch)</a><br>Die Voreinstellungen sollten aber gut für die meißten Gegebenheiten passen.</p>
+<p>Experimentiere mit den Werten per Schieberegler um die beste Geschwindigkeit der Suche zu ermitteln. Die Voreinstellungen sollten aber gut für die meißten Gegebenheiten passen.</p>
 <hr class="hrr" size="1" noshade>
 <p>Maximal zulässige Verbindungen zu Ihrem Usenet-Server<br>(Standard = 20)</p>
 <div class="pgStandard"><input type="text" id="pgconnections" name="pgconnections" value="connections = 20" readonly/>
@@ -703,7 +723,7 @@ input:focus{outline:none;border-color:#43d1ff;}
      </select>
      </div>
      <hr class="hrr" size="1" noshade>
-<p style="margin-bottom:5px;">Dieser Parameter legt fest, ob zur Darstellung des Fortschrittsbalkens ANSI-Codes verwendet werden. Die Verwendung von ANSI-Codes sorgt für eine flüssigere Darstellung und verringert das Flackern, wird jedoch möglicherweise nicht von allen Terminals unterstützt.</p>
+<p style="margin-bottom:5px;">Zur Darstellung des Fortschrittsbalkens ANSI-Codes verwenden. Die Verwendung von ANSI-Codes sorgt für eine flüssigere Darstellung und verringert das Flackern, wird jedoch möglicherweise nicht von allen Terminals unterstützt.</p>
 <div class="pgStandard"><input type="text" id="pgansycodes" name="pgansycodes" value="use_ansi_codes = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="use_ansi_codes = true">true</option>
@@ -711,7 +731,7 @@ input:focus{outline:none;border-color:#43d1ff;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p style="margin-bottom:5px;">Dieser Parameter legt fest, ob der Nachrichtenzähler während des Nachrichten-Scans in der Fortschrittsanzeige angezeigt wird.</p>
+<p style="margin-bottom:5px;">Nachrichtenzähler während des Nachrichten-Scans in der Fortschrittsanzeige anzeigen.</p>
 <div class="pgStandard"><input type="text" id="pgshowcounter" name="pgshowcounter" value="show_counter = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="show_counter = true">true</option>
@@ -719,8 +739,7 @@ input:focus{outline:none;border-color:#43d1ff;}
      </select>
      </div>
 <hr class="hrr" size="1" noshade>
-<p style="margin-bottom:5px;">Dieser Parameter legt fest, ob die direkte Suche auf jeweils eine Instanz beschränkt ist.
-Durch die Beschränkung der direkten Suche auf jeweils eine Instanz werden Fehlermeldungen wegen "zu vieler Verbindungen" vermieden, wenn mehrere Suchvorgänge gleichzeitig gestartet werden.</p>
+<p style="margin-bottom:5px;">Direkte Suche auf jeweils eine Instanz beschränken. Durch die Beschränkung auf jeweils eine Instanz werden Fehlermeldungen wegen "zu vieler Verbindungen" vermieden, wenn mehrere Suchvorgänge gleichzeitig gestartet werden.</p>
 <div class="pgStandard"><input type="text" id="pginstance" name="pginstance" value="one_instance_only = true" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="one_instance_only = true">true</option>
