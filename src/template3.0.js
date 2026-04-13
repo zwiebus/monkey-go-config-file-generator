@@ -127,9 +127,9 @@ let template = {};
 
 # Settings for the easynews search engine
 [EASYNEWS]
-# Defines the username of your Easynews account
+# Your Easynews username
 %pgeasyusername%
-# Defines the password of your Easynews account
+# Your Easynews password
 %pgeasypassword%
 # Defines whether keyword search or subject search will be used
 %pgsubjectonly%
