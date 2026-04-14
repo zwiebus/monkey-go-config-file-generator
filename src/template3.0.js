@@ -131,9 +131,10 @@ let template = {};
 %pgeasyusername%
 # Your Easynews password
 %pgeasypassword%
-# Defines whether keyword search or subject search will be used
+# Only search in subject instead of using keyword search
+# (may be more accurate in some cases but will not find "obfuscated" uploads, default = false)
 %pgsubjectonly%
-# Defines whether newest or oldest result will be used
+# Use oldest result instead of newest result (default = false)
 %pgoldestresult%
 
 # Settings for the nzb direct search
@@ -163,11 +164,13 @@ let template = {};
 # Skip direct search when using best_nzb and a good NZB file has already been found
 %pgskipdir%
 # Search only in the first group if several groups are provided
+# (the chance to get different results in different groups is virtually 0)
 %pgfirst_group_only%
-# Defines whether ANSI codes are used to display the progress bar (default = true)
+# Use ANSI codes for progress bar output
 %pgansycodes%
-# Defines whether the message counter is displayed in the progress bar during the message scan (default = true)
+# Show counter for progress bar
 %pgshowcounter%
-# Defines whether the direct search is limited to one instance at a time (default = true)
+# Only allow one instance of the direct search to run at the same time
+# (prevents too many connection errors if more than one search is started at the same time)
 %pginstance%
 `;
