@@ -191,6 +191,7 @@ let template = {};
     .column {width:100%!Important;}
     .hrl {margin-right:-10px!Important;}
     .hrr {margin-left:-10px!Important;}
+    h2 {margin-top:30px!Important;margin-left:0!Important;display:flex;justify-content:center;}
 }
 @media only screen and (max-width:420px) {
     .large-input {width:310px!Important;}
@@ -212,12 +213,11 @@ a {text-decoration:none;}
 .container {content: "";display: table;clear: both;font-size:13px;line-height:16px;background:#454750;width:98%;max-width:900px;margin:10px auto;padding:10px;border:1px solid #DEE1F7;border-radius:5px;}
 .column {float:left;width:50%;}
 h1 {font-size:14px;margin:6px;color:#43d1ff;}
-h2 {color:#43d1ff;font-size:16px;margin-left:20px;margin-top:0;}
-.select {margin-left:5px;padding:0 6px;}
+h2 {color:#43d1ff;font-size:16px;margin-left:35px;margin-top:4px;}
+.select {margin-left:5px;min-width:70px;}
 #pgconfig {font-size:11px;margin-top:5px;}
 input {color:#F1F2FF;background:#4d555d;padding:0 6px;border: 1px solid #DEE1F7;border-radius:2px;width:230px;}
 input:focus{outline:none;}
-option {min-width:40px;}
 #comb {border-left:none;border-right:none;}
 .large-input {width:380px;}
 .medium-input {width:289px;}
@@ -229,7 +229,7 @@ option {min-width:40px;}
 .buttons {margin-top:20px;}
 .changebg {float:right;margin-right:20px;width:50px;text-align:center;}
 #pgseries, #pgmovies, #pgetc, #pgetc2 {margin-bottom:5px;}
-.cat, .copy {color:#43d1ff;}
+.cat {color:#43d1ff;}
 .dl {float:right;margin-right:20px;top:0;}
 .hrl {margin-left:-10px;margin-right:20px;}
 .hrr {margin-right:-10px;}
@@ -240,14 +240,17 @@ option {min-width:40px;}
 .slider::-moz-range-thumb {width:11px;height:19px;background:#a1d4ff;cursor:pointer;border:1px solid #000;border-radius:30%;}
 .moon {height:26px;width:26px;border-radius:50%;box-shadow:10px 0 0 0 #7F7F7F inset;cursor:pointer;}
 .sun {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0,0,256,256' fill-rule='nonzero'%3E%3Cg fill='%23ffd200' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'%3E%3Cg transform='scale(8.53333,8.53333)'%3E%3Cpath d='M14.98438,0.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212zM5.79688,4.79883c-0.40657,0.0009 -0.77213,0.24784 -0.92475,0.62467c-0.15262,0.37684 -0.06192,0.80856 0.22944,1.09212l2.12109,2.12109c0.25082,0.26123 0.62326,0.36646 0.9737,0.2751c0.35044,-0.09136 0.62411,-0.36503 0.71546,-0.71546c0.09136,-0.35044 -0.01387,-0.72288 -0.2751,-0.9737l-2.12109,-2.12109c-0.18874,-0.19402 -0.44807,-0.30325 -0.71875,-0.30273zM24.17188,4.79883c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36645,0.62326 -0.2751,0.9737c0.09136,0.35043 0.36503,0.6241 0.71546,0.71546c0.35043,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM15,8c-3.86599,0 -7,3.13401 -7,7c0,3.86599 3.13401,7 7,7c3.86599,0 7,-3.13401 7,-7c0,-3.86599 -3.13401,-7 -7,-7zM2,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM25,14c-0.36064,-0.0051 -0.69608,0.18438 -0.87789,0.49587c-0.18181,0.3115 -0.18181,0.69676 0,1.00825c0.18181,0.3115 0.51725,0.50097 0.87789,0.49587h3c0.36064,0.0051 0.69608,-0.18438 0.87789,-0.49587c0.18181,-0.3115 0.18181,-0.69676 0,-1.00825c-0.18181,-0.3115 -0.51725,-0.50097 -0.87789,-0.49587zM7.91016,21.06055c-0.2598,0.00774 -0.50638,0.11632 -0.6875,0.30273l-2.12109,2.12109c-0.26123,0.25082 -0.36646,0.62326 -0.2751,0.9737c0.09136,0.35044 0.36503,0.6241 0.71546,0.71546c0.35044,0.09136 0.72288,-0.01387 0.9737,-0.2751l2.12109,-2.12109c0.29576,-0.28749 0.38469,-0.72707 0.22393,-1.10691c-0.16075,-0.37985 -0.53821,-0.62204 -0.9505,-0.60988zM22.06055,21.06055c-0.40692,0.00011 -0.77321,0.24676 -0.92633,0.62377c-0.15312,0.37701 -0.06255,0.80922 0.22907,1.09303l2.12109,2.12109c0.25082,0.26123 0.62326,0.36645 0.9737,0.27509c0.35043,-0.09136 0.6241,-0.36502 0.71546,-0.71546c0.09136,-0.35043 -0.01386,-0.72288 -0.27509,-0.9737l-2.12109,-2.12109c-0.18827,-0.19353 -0.4468,-0.30272 -0.7168,-0.30273zM14.98438,23.98633c-0.55152,0.00862 -0.99193,0.46214 -0.98437,1.01367v3c-0.0051,0.36064 0.18438,0.69608 0.49587,0.87789c0.3115,0.18181 0.69676,0.18181 1.00825,0c0.3115,-0.18181 0.50097,-0.51725 0.49587,-0.87789v-3c0.0037,-0.2703 -0.10218,-0.53059 -0.29351,-0.72155c-0.19133,-0.19097 -0.45182,-0.29634 -0.72212,-0.29212z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");width:30px;height:30px;cursor:pointer;}
+.monkey {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd' viewBox='0 0 509 509'%3E%3Cdefs%3E%3Cstyle%3E.fil2%7Bfill:%2300acd7%7D.fil0%7Bfill:%23fff%7D%3C/style%3E%3C/defs%3E%3Cg id='Ebene_x0020_1'%3E%3Cg id='_355218312'%3E%3Cpath d='M165 419c17 32 51 55 91 55 39 0 73-23 91-55-25 5-58 10-91 10-34 0-67-5-91-10M261 285l56 10-7 19zM252 285l-49 29-7-19zM399 169l-80 18c7 15 21 26 38 26 23 0 42-19 42-42zM113 169v2c0 23 19 42 42 42 17 0 32-11 38-26z' class='fil0'/%3E%3Cpath d='M431 146c2 8 4 16 4 25 0 43-35 78-78 78-39 0-71-30-76-68zM82 146l150 35c-5 38-38 68-77 68-43 0-77-35-77-78 0-9 1-17 4-25' class='fil0'/%3E%3Cpath d='M155 62C81 62 21 122 21 196s60 134 134 134h7c-6 12-9 26-9 41 0 11 4 27 3 25 9 2 20 4 32 6l1-34 11 36s35 5 56 5c38 0 76-7 100-12 2-9 3-17 3-26 0-15-3-29-9-41h7c74 0 134-60 134-134S431 62 357 62c-40 0-76 18-101 47-25-28-61-47-101-47' class='fil0'/%3E%3C/g%3E%3Cg id='_355297448'%3E%3Cpath d='M472 509H37c-21 0-37-16-37-37V37C0 16 16 0 37 0h435c21 0 37 16 37 37v435c0 21-16 37-37 37' style='fill:%2300aed7'/%3E%3Cpath d='M163 86C96 86 41 140 41 207s55 122 122 122h6c-5 11-8 23-8 37 0 10 4 25 3 23 8 2 18 4 29 6l1-31 9 32s32 4 52 4c34 0 69-6 90-11 2-7 3-15 3-23 0-13-3-26-8-37h7c67 0 121-55 121-122S414 86 347 86c-37 0-70 16-92 42-23-26-56-42-92-42m-67 75 137 32c-5 35-34 62-70 62-39 0-70-32-70-71 0-8 1-15 3-23m317 0c3 8 4 15 4 23 0 39-31 71-70 71-36 0-65-27-70-62zm-288 21v2c0 21 17 38 38 38 16 0 29-9 35-23zm260 0-73 17c6 14 19 23 35 23 21 0 38-17 38-38zM251 288l-45 26-6-17zm8 0 51 9-6 17zm-87 121c16 30 47 50 83 50 35 0 66-20 82-50-22 5-52 9-82 9-31 0-61-4-83-9' class='fil0'/%3E%3Cellipse id='Ellipse_x0020_' cx='157' cy='198' class='fil0' rx='87' ry='85'/%3E%3Cellipse id='Ellipse_x0020__0' cx='358' cy='201' class='fil0' rx='87' ry='85'/%3E%3C/g%3E%3Cg id='_355297928'%3E%3Cpath d='M240 166c-12 4-21 6-33 9-3 1-3 1-6-2s-5-5-9-7c-13-7-25-5-36 3-14 8-21 21-21 37 1 16 12 30 27 32 14 2 25-3 34-13 2-3 4-5 6-8h-39c-4 0-5-2-4-6 3-6 8-16 10-22 1-1 2-3 5-3h73c0 6 0 11-1 16-2 15-8 28-16 39-15 19-34 31-57 34-20 3-38-1-54-13-15-11-23-26-25-44-3-22 4-41 17-58 14-19 33-31 56-35 18-3 36-1 52 10 11 7 18 16 23 28 2 2 1 3-2 3M331 275c-18 0-34-5-48-17-12-10-19-23-22-39-3-22 3-42 16-60 15-19 32-29 56-33 20-4 40-2 57 10 16 11 25 25 28 45 3 26-4 48-23 67-13 13-29 22-48 26-5 1-10 1-16 1m48-80c0-3 0-5-1-7-3-19-22-31-40-26-19 4-31 16-35 34-4 16 4 32 18 38 11 5 22 4 32-1 16-8 25-21 26-38' class='fil2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); background-repeat: no-repeat;width:28px;height:28px;display:inline-block;position:absolute;}
 .help {color:#00AFFF;font-weight:bold;}
 .help:hover {color:#73CBEA;}
 .arrow {border:solid #F1F2FF;border-width:0 3px 3px 0;display:inline-block;padding:3px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg);}
 </style>
+</head>
 <body>
 <div class="container">
+<a class="monkey" href="https://github.com/Tensai75/nzb-monkey-go" title="Nzb-monkey-Go"></a>
 <span class="changebg sun" id="changestyle" onclick="changeStyle()"></span>
-<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Check for new releases" target="_blank">Version 2.0.32</a><a href="https://github.com/Tensai75/nzb-monkey-go/wiki/" class="dl button" title="Nzb-monkey-Go Wiki" target="_blank">Online Help</a>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" title="Webseite auf neue Version prüfen" target="_blank">Version 2.0.32</a><a href="https://github.com/Tensai75/nzb-monkey-go/wiki/" class="dl button" title="Nzb-monkey-Go Wiki" target="_blank">Online Hilfe (englisch)</a>
 <h2>Create Nzb-Monkey-Go config file</h2>
 <p>To create only NZB files and save them in a folder, simply specify the nzbsavepath <font color="#FF0000">&#9733;</font> under <span class="cat">EXECUTE</span>. For the most successful search, however, you should definitely configure <a class="cat" href="#directsearch">DIRECTSEARCH</a>. Otherwise, select the values required for your setup. For input fields without selections and with quotation marks, the information must always be enclosed in "|".</p>
 <form id="pg" name="pg">
@@ -599,10 +602,10 @@ option {min-width:40px;}
 <div id="easynews" style="display:block;">
 <h1>EASYNEWS SEARCH</h1>
 <p style="margin-bottom:5px;">This section defines the settings for Easynews search engine. The Easynews search engine must be activated in the <a class="cat" href="#searchengines">SEARCHENGINES</a>.</p>
-<p>Username of your Easynews account</p>
+<p>Your Easynews username</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgeasyusername" name="pgeasyusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="username = " hidden/></div>
 <hr class="hrr" size="1" noshade>
-<p>Password of your Easynews account</p>
+<p>Your Easynews password</p>
 <div class="pgStandard"><input type="text" class="large-input" id="pgeasypassword" name="pgeasypassword" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
 <hr class="hrr" size="1" noshade>
 <p>Use the keyword or subject search. If set to "true", only the subjects are searched, which may result in fewer incorrect results but will not find hidden uploads.</p>
@@ -620,6 +623,7 @@ option {min-width:40px;}
       <option value="oldest_result = true">true</option>
      </select>
      </div>
+ </div>
 <hr class="hrr" size="1" noshade>
 <div id="directsearch" style="display:block;">
 <h1>NZB-DIRECTSEARCH</h1>
@@ -750,7 +754,6 @@ However, the default settings should work good for most conditions.</p>
      </select>
      </div>
   </div>
-</div>
 </form>
 </div>
 <br style="clear:both;">
