@@ -166,9 +166,7 @@ input:focus {
 }
 .changebg {
   float: right;
-  margin-right: 20px;
-  width: 50px;
-  text-align: center;
+  margin-right: 0;
 }
 #pgseries, #pgmovies, #pgetc, #pgetc2 {
   margin-bottom: 5px;
@@ -178,7 +176,7 @@ input:focus {
 }
 .dl {
   float:right;
-  margin-right:20px;
+  margin-right:10px;
   top:0;
 }
 .hrl {
