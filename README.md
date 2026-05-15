@@ -11,6 +11,7 @@ HTML GUI for creating and saving the <a href="https://github.com/Tensai75/nzb-mo
 <li>NZB processing: Target selection hides other targets</li>
 <li>Reset button: Deletes the template and resets all fields</li>
 <li>An incorrect port/SSL combination in the direct search is automatically corrected</li>
+<li>Highlight changed values</li>  
 </ul>
 
 ![Output](/src/mgcfg.png)
