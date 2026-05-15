@@ -126,6 +126,7 @@ input {
 }
 input:focus {
   outline: none;
+  border-color:#43d1ff;
 }
 #comb {
   border-left: none;
@@ -136,7 +137,7 @@ input:focus {
   width: 380px;
 }
 .medium-input {
-  width: 289px;
+  width: 300px;
 }
 .small-input {
   width: 188px;
@@ -166,7 +167,9 @@ input:focus {
 }
 .changebg {
   float: right;
-  margin-right: 0;
+  margin-right: 20px;
+  width: 50px;
+  text-align: center;
 }
 #pgseries, #pgmovies, #pgetc, #pgetc2 {
   margin-bottom: 5px;
@@ -176,7 +179,7 @@ input:focus {
 }
 .dl {
   float:right;
-  margin-right:10px;
+  margin-right:20px;
   top:0;
 }
 .hrl {
