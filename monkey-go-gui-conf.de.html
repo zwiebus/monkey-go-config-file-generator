@@ -198,7 +198,7 @@ let template = {};
     .changebg {margin-right:5px!Important;}
 }
 .light-mode {color:#000!Important;background:#F5F5F5!Important;border-color:#000!Important;}
-.light-mode input {background:#fff!Important;}
+.light-mode input {color:#1F1F1F!Important;background:#fff!Important;}
 .light-mode input:focus {border-color: red!Important;}
 .light-mode .slider {background:transparent!Important;}
 .light-mode .help {color:#0600FD!Important;}
@@ -220,14 +220,14 @@ input {color:#F1F2FF;background:#4d555d;padding:1px 6px;border: 1px solid #DEE1F
 input:focus{outline:none;border-color:#43d1ff;}
 #comb {border-left:none;border-right:none;border-radius:0;}
 .large-input {width:380px;}
-.medium-input {width:289px;}
+.medium-input {width:300px;}
 .small-input {width:188px;}
 #pgEXECUTE {width:200px;}
 .button {background:#1A5779;color:#fff;font-size:14px;border:1px solid #1C60A0;border-radius:3px;padding:3px 6px;cursor:pointer;text-decoration:none;}
 .button:hover {background:#2d4f78;border-color:#325378;}
 .button:active {background:#7C37AD;border-color:#535a62;}
 .buttons {margin-top:20px;}
-.changebg {float:right;margin-right:10px;}
+.changebg {float:right;margin-right:0px;}
 #pgseries, #pgmovies, #pgetc, #pgetc2 {margin-bottom:5px;}
 .cat {color:#43d1ff;}
 .dl {float:right;margin-right:10px;top:0;}
@@ -255,6 +255,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <p>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. Für eine möglichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten wähle die für dein Setup benötigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anführungszeichen müssen die Angaben immer zwischen diese eingefügt werden "|".</p>
 <form id="pg" name="pg">
 <div class="column">
+<div id="general">
 <h1>GENERAL</h1>
   <p>Wähle ein Ziel für die Verarbeitung von NZB-Dateien</p>
   <div class="pgStandard">
@@ -301,13 +302,14 @@ input:focus{outline:none;border-color:#43d1ff;}
   <hr class="hrl" size="1" noshade>
 <p>Debug-Protokoll in die Datei logfile.txt unter Windows/OSX<br>(im selben Verzeichnis wie nzb-monkey-go) oder in die Datei /tmp/nzb-monkey-go.log unter Linux schreiben</p>
   <div class="pgStandard">
-   <input type="text" id ="pgdebug" name="pgdebug" value="debug = false " readonly/>
+   <input type="text" id ="pgdebug" name="pgdebug" value="debug = false" readonly/>
      <select class="select" onchange="changeValue(event);">
       <option value="debug = false">false</option>
       <option value="debug = true">true</option>
      </select>
    </div>
 <hr class="hrl" size="1" noshade>
+</div>
 <div id="executed" style="display:block;">
 <h1>EXECUTE</h1>
 <p>Passwort auf Dateinamen erweitern {{password}}</p>
@@ -328,7 +330,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <hr class="hrl" size="1" noshade>
 <p>Pfad zum Speichern von NZB-Dateien <font color="#FF0000">&#9733;</font></p>
 <p>Entweder ein absoluter Pfad oder ein relativer Pfad zum<br>Home- oder beliebigen Verzeichnis des Benutzers</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgnzbsavepath" name="pgnzbsavepath" value="nzbsavepath = &quot;C:\User\nzb&quot;" readonly/><input class="medium-input" id="comb" value="&quot;C:\User\nzb&quot;" style="margin-left:-302px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="nzbsavepath = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgnzbsavepath" name="pgnzbsavepath" value="nzbsavepath = &quot;C:\User\nzb&quot;" readonly/><input id="comb" value="&quot;C:\User\nzb&quot;" style="margin-left:-302px;width:289px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="nzbsavepath = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Standardprogramm für NZB-Dateien nicht ausführen</p>
 <div class="pgStandard"><input type="text" id="pgdontexecute" name="pgdontexecute" value="dontexecute = true" readonly/>
@@ -433,16 +435,16 @@ input:focus{outline:none;border-color:#43d1ff;}
      </select></div>
 <hr class="hrl" size="1" noshade>
 <p>Basic Auth Benutzername</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgusernget" name="pgusernget" value="user = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-350px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="user = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgusernget" name="pgusernget" value="user = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-350px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="user = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basic Auth Passwort</p>
-<div class="pgStandard"><input type="text" class="large-input" id="pgpassnget" name="pgpassnget" value="pass = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-349px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="pass = " hidden/></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgpassnget" name="pgpassnget" value="pass = &quot;&quot;" readonly/><input  class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-349px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="pass = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Basepath</p>
 <div class="pgStandard"><input class="large-input" type="text" id="pgbasepathnget" name="pgbasepathnget" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="basepath = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>Kategorie</p>
-<div class="pgStandard"><input class="large-input" type="text" id="pgcategorynget" name="pgcategorynget" value="category = &quot;&quot;" readonly/><input class="medium-input"t id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="category = " hidden/></div>
+<div class="pgStandard"><input class="large-input" type="text" id="pgcategorynget" name="pgcategorynget" value="category = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="category = " hidden/></div>
 <hr class="hrl" size="1" noshade>
 <p>NZB pausiert zur Warteschlange hinzufügen</p>
 <div class="pgStandard"><input type="text" id="pgaddpausednget" name="pgaddpausednget" value="addpaused = false" readonly/>
@@ -769,6 +771,7 @@ const dropdown = document.getElementById("select_target");
   dropdown.addEventListener("change", function() {
   const selectedValue = dropdown.value;
   document.getElementById("pgEXECUTE").value = 'target = '+ dropdown.value +'';
+  // document.getElementById("pgEXECUTE").style.color = "#7DEAEA";
    let executed = document.getElementById("executed");
    let sabnzbd = document.getElementById("sabnzbd");
    let nzbget = document.getElementById("nzbget");
@@ -795,17 +798,20 @@ const dropdown = document.getElementById("select_target");
          nzbget.style.display = 'none';
          executed.style.display = 'none';
       }
+     markChangedValues();
 });
 function changeValue(event) {
    let selectElement = event.target;
    let value = selectElement.value;
    event.target.previousElementSibling.value = value;
+   markChangedValues();
 }
 function combine(event) {
    let inputElement = event.target;
    let value = inputElement.value;
    let value2 = event.target.nextElementSibling.value;
    event.target.previousElementSibling.value = value2 + value;
+   markChangedValues();
 }
 function nossl() {
   let nossl = document.getElementById("pgportdir");
@@ -830,10 +836,12 @@ function ssltrue() {
 function changeValueAndSSL(event) {
    changeValue(event);
    nossl();
+   markChangedValues();
 }
 function changeValueAndPort(event) {
    changeValue(event);
    ssltrue();
+   markChangedValues();
 }
 function getData() {
   let pg = {};
@@ -881,6 +889,7 @@ function clearConfig() {
   synologydls.style.display = 'none';
   sabnzbd.style.display = 'none';
   scrollToTop();
+  markChangedValues();
 }
 function changeStyle() {
   let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow');
@@ -896,11 +905,30 @@ function changeStyle() {
      changeStyle.classList.remove("moon");
      changeStyle.classList.add("sun");
     }
+   markChangedValues();
 }
 function setCursor(){
  let inputField = document.querySelectorAll('#comb');
   for (let i = 0; i < inputField.length; i++) {
    inputField[i].setSelectionRange(1, 1);
+  }
+}
+function markChangedValues() {
+ let elements = document.querySelectorAll('input');
+  for (let i = 0; i < elements.length; i++) {
+   if(elements[i].classList.contains('light-mode')) {
+    if (elements[i].value != elements[i].defaultValue) {
+     elements[i].style.setProperty('color' , "#FF0000" , 'important');
+    } else if (elements[i].value == elements[i].defaultValue){
+     elements[i].style.setProperty('color' , "#1F1F1F" , 'important');
+    }
+    } else {
+    if (elements[i].value != elements[i].defaultValue) {
+     elements[i].style.color = "#7DEAEA";
+    } else if (elements[i].value == elements[i].defaultValue){
+     elements[i].style.color = "#F1F2FF";
+    }
+   }
   }
 }
 </script>
