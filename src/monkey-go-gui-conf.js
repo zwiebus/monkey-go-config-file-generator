@@ -5,7 +5,6 @@ const dropdown = document.getElementById("select_target");
   dropdown.addEventListener("change", function() {
   const selectedValue = dropdown.value;
   document.getElementById("pgEXECUTE").value = 'target = '+ dropdown.value +'';
-  // document.getElementById("pgEXECUTE").style.color = "#7DEAEA";
    let executed = document.getElementById("executed");
    let sabnzbd = document.getElementById("sabnzbd");
    let nzbget = document.getElementById("nzbget");
@@ -16,23 +15,23 @@ const dropdown = document.getElementById("select_target");
          nzbget.style.display = 'none';
          synologydls.style.display = 'none';
          sabnzbd.style.display = 'none';
-     } else if(execute.value.includes('SABNZBD')) {
+      } else if(execute.value.includes('SABNZBD')) {
          sabnzbd.style.display = 'block';
          nzbget.style.display = 'none';
          synologydls.style.display = 'none';
          executed.style.display = 'none';
-     } else if(execute.value.includes('NZBGET')) {
+      } else if(execute.value.includes('NZBGET')) {
          nzbget.style.display = 'block';
          sabnzbd.style.display = 'none';
          synologydls.style.display = 'none';
          executed.style.display = 'none';
-     } else if(execute.value.includes('SYNOLOGYDLS')) {
+      } else if(execute.value.includes('SYNOLOGYDLS')) {
          synologydls.style.display = 'block';
          sabnzbd.style.display = 'none';
          nzbget.style.display = 'none';
          executed.style.display = 'none';
-     }
-    markChangedValues();
+      }
+     markChangedValues();
 });
 
 function changeValue(event) {
@@ -98,6 +97,8 @@ function getData() {
      pg['pgconfig'] = pg['pgconfig'].replace(pattern, pg[key]);
     }
   document.getElementById('pgconfig').innerText = pg['pgconfig'];
+  document.getElementById('pgconfig').style.display = 'block';
+  document.getElementById('conf').style.display = 'block';
 }
 
 function safeConfig() {
@@ -118,12 +119,23 @@ function safeConfig() {
 }
 
 function scrollToTop() {
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function scrollToBottom() {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+function closeConfig() {
+  document.getElementById('pgconfig').style.display = 'none';
+  document.getElementById('conf').style.display = 'none';
 }
 
 function clearConfig() {
   document.getElementById('pgconfig').innerText = '';
   document.getElementById('pg').reset();
+  document.getElementById('pgconfig').style.display = 'none';
+  document.getElementById('conf').style.display = 'none';
   let executed = document.getElementById("executed");
   let sabnzbd = document.getElementById("sabnzbd");
   let nzbget = document.getElementById("nzbget");
@@ -137,7 +149,7 @@ function clearConfig() {
 }
 
 function changeStyle() {
-  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow');
+  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow, .totop,.tobottom, #pgconfig');
   let changeStyle = document.querySelector("#changestyle");
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
@@ -155,9 +167,23 @@ function changeStyle() {
 
 function setCursor(){
  let inputField = document.querySelectorAll('#comb');
+ let element = document.querySelector('.container');
   for (let i = 0; i < inputField.length; i++) {
    inputField[i].setSelectionRange(1, 1);
+  if(element.classList.contains('light-mode')){
+   if(document.activeElement === inputField[i]) {
+     inputField[i].previousElementSibling.style.setProperty('border-color' , "#FF0000" , 'important');
+   } else {
+     inputField[i].previousElementSibling.style.setProperty('border-color' , "#000" , 'important');
+   }
+  } else {
+   if(document.activeElement === inputField[i]) {
+     inputField[i].previousElementSibling.style.borderColor ='#43d1ff';
+   } else {
+     inputField[i].previousElementSibling.style.borderColor ='#DEE1F7';
+   }
   }
+ }
 }
 
 function markChangedValues() {
@@ -166,15 +192,16 @@ function markChangedValues() {
    if(elements[i].classList.contains('light-mode')) {
     if (elements[i].value != elements[i].defaultValue) {
      elements[i].style.setProperty('color' , "#FF0000" , 'important');
-    } else if(elements[i].value == elements[i].defaultValue) {
+    } else if (elements[i].value == elements[i].defaultValue){
      elements[i].style.setProperty('color' , "#1F1F1F" , 'important');
     }
-    } else {
+   } else {
     if (elements[i].value != elements[i].defaultValue) {
      elements[i].style.color = "#7DEAEA";
-    } else if(elements[i].value == elements[i].defaultValue) {
+    } else if (elements[i].value == elements[i].defaultValue){
      elements[i].style.color = "#F1F2FF";
     }
    }
+   setCursor();
   }
 }
