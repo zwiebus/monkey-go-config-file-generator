@@ -132,13 +132,14 @@ h2 {
 }
 #pgconfig {
   position: relative;
-  height: 90%;
-  width: 700px;
+  max-height: 90%;
+  max-width: 700px;
   background: #454755;
   font-size: 11px;
   padding: 10px;
   border: 1px solid #DEE1F7;
   border-radius: 5px;
+  resize: both;
   overflow: auto;
   z-index: 50;
 }
