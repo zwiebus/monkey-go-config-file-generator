@@ -133,8 +133,7 @@ h2 {
 #pgconfig {
   position: relative;
   height: 90%;
-  width: auto;
-  max-width: 700px;
+  width: 700px;
   background: #454755;
   font-size: 11px;
   padding: 10px;
