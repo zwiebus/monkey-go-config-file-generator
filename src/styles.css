@@ -76,6 +76,17 @@ body {
   font-family: Monospace,Consolas,Menlo,Monaco,DroidSansMono,Arial;
   background: #313239;
 }
+
+.configbelow {
+  position: relative;
+  font-size: 11px;
+}
+.toggleconf {
+  position: relative;
+  float: right;
+  margin: -35px 125px 0;
+  z-index: 200
+}
 p {
   margin: 2px 0;
 }
@@ -117,7 +128,7 @@ h2 {
   padding: 0 6px;
   min-width: 75px;
 }
-#conf {
+.config {
   position:fixed;
   top: 20px;
   left: 50%;
@@ -127,11 +138,14 @@ h2 {
 }
 .conf {
   position:relative;
-  float:right;
-  margin: -35px 30px 0;z-index:200
+  float: right;
+  margin: -35px 30px 0;
+  z-index: 200
 }
-#pgconfig {
+.pgconfig {
   position: relative;
+  min-height: 50%;
+  min-width: 500px;
   max-height: 90%;
   max-width: 700px;
   background: #454755;
@@ -188,7 +202,9 @@ input:focus {
   border-color: #535a62;
 }
 .buttons {
+  position: relative;
   margin-top: 20px;
+  z-index: 60;
 }
 .changebg {
   float: right;
@@ -300,7 +316,7 @@ input:focus {
 .totop {
   position: relative;
   float: right;
-  margin: -18px 10px -5px 0;
+  margin: -18px 5px -5px 0;
   border: solid #F1F2FF;
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -308,10 +324,12 @@ input:focus {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
   height: 10px;
-  width: 10px;cursor:pointer;
+  width: 10px;
+  cursor: pointer;
+  z-index: 80;
 }
 .tobottom {
-  margin: 0 15px 0 5px;
+  margin: 0 5px 0 5px;
   border: solid #F1F2FF;
   border-width: 0 3px 3px 0;
   display: inline-block;
