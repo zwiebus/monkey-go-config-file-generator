@@ -148,6 +148,26 @@ function clearConfig() {
   markChangedValues();
 }
 
+function toggleConf() {
+  let element = document.getElementById('pgconfig');
+  let conf = document.getElementById("conf");
+  let button = document.querySelector('.toggleconf');
+   if (element.classList.contains('pgconfig')) {
+    element.classList.remove("pgconfig");
+    element.classList.add("configbelow");
+    conf.classList.remove("config");
+    conf.classList.add("configbelow");
+    button.innerText = 'Fenster'; // 'Window'
+    scrollToBottom();
+   } else  {
+    element.classList.add("pgconfig");
+    element.classList.remove("configbelow");
+    conf.classList.add("config");
+    conf.classList.remove("configbelow");
+    button.innerText = 'Unterhalb';  // 'Below'
+   }
+}
+
 function changeStyle() {
   let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow, .totop,.tobottom, #pgconfig');
   let changeStyle = document.querySelector("#changestyle");
