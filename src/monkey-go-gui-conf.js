@@ -157,14 +157,14 @@ function toggleConf() {
     element.classList.add("configbelow");
     conf.classList.remove("config");
     conf.classList.add("configbelow");
-    button.innerText = 'Fenster'; // 'Window'
+    button.innerText = 'Window'; 
     scrollToBottom();
    } else  {
     element.classList.add("pgconfig");
     element.classList.remove("configbelow");
     conf.classList.add("config");
     conf.classList.remove("configbelow");
-    button.innerText = 'Unterhalb';  // 'Below'
+    button.innerText = 'Below';  
    }
 }
 
