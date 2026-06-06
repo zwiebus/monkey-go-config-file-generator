@@ -1,0 +1,547 @@
+<!--
+ * @package monkey-go-config-file-generator
+ * @author zwiebus
+ * @author TENSAI
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="nzb-monkey-go.ico">
+<link rel="stylesheet" href="styles.css"/>
+<title>Monkey-Go-conf-GUI</title>
+<script src="template3.0.js"></script> 
+</head>
+<body>
+<div class="container">
+<a class="monkey" href="https://github.com/Tensai75/nzb-monkey-go" target="_blank" title="Nzb-monkey-Go"></a>
+<a class="dl tobottom" onclick="scrollToBottom();"></a>
+<a class="dl sun" id="changestyle" onclick="changeStyle()"></a>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" target="_blank" title="Webseite auf neue Version pr&uuml;fen" target="_blank">Version 2.0.33b</a>
+<a href="https://github.com/Tensai75/nzb-monkey-go/wiki/" class="dl button" title="Nzb-monkey-Go Wiki" target="_blank">Online Hilfe (englisch)</a>
+<h2>Create Nzb-Monkey-Go config file</h2>
+<p>To create only NZB files and save them in a folder, simply specify the nzbsavepath <font color="#FF0000">&#9733;</font> under <span class="cat">EXECUTE</span>. For the most successful search, however, you should definitely configure <a class="cat" href="#directsearch">DIRECTSEARCH</a>. Otherwise, select the values required for your setup. For input fields without selections and with quotation marks, the values or must always be enclosed in "|".</p>
+<form id="pg" name="pg">
+<div class="column">
+<div id="general">
+<h1>GENERAL</h1>
+ <div class="section">
+  <p>Select a destination for processing NZB files</p>
+  <div class="pgStandard">
+   <input type="text" id="pgEXECUTE" name="pgEXECUTE" value="target = &quot;EXECUTE&quot;" readonly/>
+     <select class="select" id="select_target">
+      <option value="&quot;EXECUTE&quot;">EXECUTE</option>
+      <option value="&quot;SABNZBD&quot;">SABNZBD</option>
+      <option value="&quot;NZBGET&quot;">NZBGET</option>
+      <option value="&quot;SYNOLOGYDLS&quot;">SYNOLOGYDLS</option>
+     </select>
+   </div>
+  <hr class="hrl" size="1" noshade="">
+<p>Let the monkey choose a category.</p>
+<p>You can find further settings under <a href="#categories" class="cat">CATEGORISER</a></p>
+  <div class="pgStandard">
+   <input type="text" id="pgcategorize" name="pgcategorize" value="categorize = &quot;off&quot;" readonly/>
+     <select class="select" id="select_target_cat" onchange="changeValue(event);">
+      <option value="categorize = &quot;off&quot;">off</option>
+      <option value="categorize = &quot;auto&quot;">car</option>
+      <option value="categorize = &quot;manual&quot;">manual</option>
+     </select>
+   </div>
+  <hr class="hrl" size="1" noshade="">
+<p>Seconds to wait before exiting/closing the window after successful completion</p>
+  <div class="pgStandard">
+   <input type="text" id="pgsuccess_wait_time" name="pgsuccess_wait_time" value="success_wait_time = 3" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="success_wait_time = 3">3</option>
+      <option value="success_wait_time = 6">6</option>
+      <option value="success_wait_time = 10">10</option>
+      <option value="success_wait_time = 15">15</option>
+     </select>
+   </div>
+  <hr class="hrl" size="1" noshade="">
+<p>Seconds to wait before exiting/closing<br>the window after an error</p>
+  <div class="pgStandard">
+   <input type="text" id="pgerror_wait_time" name="pgerror_wait_time" value="error_wait_time = 10" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="error_wait_time = 10">10</option>
+      <option value="error_wait_time = 15">15</option>
+      <option value="error_wait_time = 20">20</option>
+     </select>
+  </div>
+  <hr class="hrl" size="1" noshade="">
+<p>Write the debug log to the file logfile.txt on Windows/OSX <br>in the same directory as nzb-monkey-go<br>or to the file /tmp/nzb-monkey-go.log on Linux</p>
+  <div class="pgStandard">
+   <input type="text" id="pgdebug" name="pgdebug" value="debug = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="debug = false">false</option>
+      <option value="debug = true">true</option>
+     </select>
+   </div>
+ </div>
+<hr class="hrl" size="1" noshade="">
+</div>
+<div id="executed" style="display:block;">
+<h1>EXECUTE</h1>
+<p>Extend password to file name {{password}}</p>
+  <div class="pgStandard"><input type="text" id="pgpasstofile" name="pgpasstofile" value="passtofile = true" readonly/>
+    <select class="select" onchange="changeValue(event);">
+      <option value="passtofile = true">true</option>
+      <option value="passtofile = false">false</option>
+     </select>
+   </div>
+<hr class="hrl" size="1" noshade="">
+<p>Copy password to clipboard</p>
+  <div class="pgStandard"><input type="text" id="pgpasstoclipboard" name="pgpasstoclipboard" value="passtoclipboard = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="passtoclipboard = false">false</option>
+      <option value="passtoclipboard = true">true</option>
+     </select>
+  </div>
+<hr class="hrl" size="1" noshade="">
+<p>Path to save NZB files <font color="#FF0000">&#9733;</font></p>
+<p>Either an absolute path or a relative path to <br>the user's home or any directory</p>
+<div class="pgStandard"><input class="large-input" type="text" id="pgnzbsavepath" name="pgnzbsavepath" value="nzbsavepath = &quot;C:\User\nzb&quot;" readonly/><input class="medium-input" id="comb" value="&quot;C:\User\nzb&quot;" style="margin-left:-302px;width:289px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="nzbsavepath = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Do not run the default program for NZB files</p>
+<div class="pgStandard"><input type="text" id="pgdontexecute" name="pgdontexecute" value="dontexecute = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="dontexecute = true">true</option>
+      <option value="dontexecute = false">false</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Delete old NZB files from nzbsavepath</p>
+<div class="pgStandard"><input type="text" id="pgclean_up_enable" name="pgclean_up_enable" value="clean_up_enable = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="clean_up_enable = false">false</option>
+      <option value="clean_up_enable = true">true</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>NZB files older than x days will be deleted</p>
+<div class="pgStandard"><input type="text" id="pgclean_up_max_age" name="pgclean_up_max_age" value="clean_up_max_age = 2" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="clean_up_max_age = 2">2</option>
+      <option value="clean_up_max_age = 1">1</option>
+      <option value="clean_up_max_age = 5">5</option>
+     </select>
+     </div>
+</div>
+<div id="sabnzbd" style="display:none;">
+<h1>SABNZBD</h1>
+<p>SABnzbd hostname</p>
+<div class="pgStandard"><input type="text" id="pghost" name="pghost" value="host = &quot;localhost&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="host = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>SABnzbd port</p>
+<div class="pgStandard"><input type="text" id="pgport" name="pgport" value="port = 8080" readonly/><input class="small-input" type="text" id="comb" value="8080" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="port = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Use https</p>
+<div class="pgStandard"><input type="text" id="pgssl" name="pgssl" value="ssl = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="ssl = false">false</option>
+      <option value="ssl = true">true</option>
+     </select></div>
+<hr class="hrl" size="1" noshade="">
+<p>Skip SSL security checks <br>(e.g. for self-signed certificates)</p>
+<div class="pgStandard"><input type="text" id="pgskip_check" name="pgskip_check" value="skip_check = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="skip_check = false">false</option>
+      <option value="skip_check = true">true</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>NZB key. Found under Settings/General/Security. The NZB is passed directly to SABNZBD.</p>
+<div class="pgStandard"><input class="large-input" type="text" id="pgnzbkey" name="pgnzbkey" value="nzbkey = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-335px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="nzbkey = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Basic Auth Username</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgbasicauth_username" name="pgbasicauth_username" value="basicauth_username = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-256px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="basicauth_username = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Basic Auth Password</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgbasicauth_password" name="pgbasicauth_password" value="basicauth_password = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-257px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="basicauth_password = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Basepath</p>
+<div class="pgStandard"><input class="large-input" type="text" id="pgbasepath" name="pgbasepath" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="basepath = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>category</p>
+<div class="pgStandard"><input class="large-input" type="text" id="pgcategory" name="pgcategory" value="category = &quot;&quot;" readonly/><input class="medium-input" t="" id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="category = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>NZB paused add to queue</p>
+<div class="pgStandard"><input type="text" id="pgaddpaused" name="pgaddpaused" value="addpaused = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="addpaused = false">false</option>
+      <option value="addpaused = true">true</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Add compression when uploading, either "none" or "zip." Useful when running SABNZBD externally (server, NAS, etc.).</p>
+<div class="pgStandard"><input type="text" id="pgcompression" name="pgcompression" value="compression = &quot;none&quot;" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="compression = &quot;none&quot;">none</option>
+      <option value="compression = &quot;zip&quot;">zip</option>
+     </select>
+     </div>
+</div>
+<div id="nzbget" style="display:none;">
+<h1>NZBGET</h1>
+<p>NZBGET hostname</p>
+<div class="pgStandard"><input type="text" id="pghostnget" name="pghostnget" value="host = &quot;localhost&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="host = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>NZBGET port</p>
+<div class="pgStandard"><input type="text" id="pgportnget" name="pgportnget" value="port = 6789" readonly/><input class="small-input" type="text" id="comb" value="6789" style="margin-left:-201px;" oninput="combine(event);"><input type="text" value="port = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Use https</p>
+<div class="pgStandard"><input type="text" id="pgsslnget" name="pgsslnget" value="ssl = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="ssl = false">false</option>
+      <option value="ssl = true">true</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Skip SSL security checks <br>(e.g. for self-signed certificates)</p>
+<div class="pgStandard"><input type="text" id="pgskip_check_nget" name="pgskip_check_nget" value="skip_check = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="skip_check = false">false</option>
+      <option value="skip_check = true">true</option>
+     </select></div>
+<hr class="hrl" size="1" noshade="">
+<p>Basic Auth Username</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgusernget" name="pgusernget" value="user = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-350px;width:330px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="user = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Basic Auth Password</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgpassnget" name="pgpassnget" value="pass = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-349px;width:331px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="pass = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Basepath</p>
+<div class="pgStandard"><input class="large-input" type="text" id="pgbasepathnget" name="pgbasepathnget" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="basepath = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>category</p>
+<div class="pgStandard"><input class="large-input" type="text" id="pgcategorynget" name="pgcategorynget" value="category = &quot;&quot;" readonly/><input class="medium-input" t="" id="comb" value="&quot;&quot;" style="margin-left:-324px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="category = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>NZB paused add to queue</p>
+<div class="pgStandard"><input type="text" id="pgaddpausednget" name="pgaddpausednget" value="addpaused = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="addpaused = false">false</option>
+      <option value="addpaused = true">true</option>
+     </select>
+     </div>
+</div>
+<div id="synologydls" style="display:none;">
+<h1>SYNOLOGYDLS</h1>
+<p>Downloadstation host</p>
+<div class="pgStandard"><input type="text" id="pghostsyn" name="pghostsyn" value="host = &quot;localhost&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;localhost&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="host = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Downloadstation port</p>
+<div class="pgStandard"><input type="text" id="pgportsyn" name="pgportsyn" value="port = 5000" readonly/><input class="small-input" type="text" id="comb" value="5000" style="margin-left:-201px;" oninput="combine(event);"><input type="text" value="port = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Use https</p>
+<div class="pgStandard"><input type="text" id="pgsslsyn" name="pgsslsyn" value="ssl = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="ssl = false">false</option>
+      <option value="ssl = true">true</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Skip SSL security checks <br>(e.g. for self-signed certificates)</p>
+<div class="pgStandard"><input type="text" id="pgskip_check_syn" name="pgskip_check_syn" value="skip_check = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="skip_check = false">false</option>
+      <option value="skip_check = true">true</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Downloadstation username</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgusersyn" name="pgusersyn" value="user = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-350px;width:330px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="user = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Downloadstation password</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgpasssyn" name="pgpasssyn" value="pass = &quot;&quot;" readonly/><input id="comb" value="&quot;&quot;" style="margin-left:-349px;width:331px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="pass = " hidden/></div>
+<hr class="hrl" size="1" noshade="">
+<p>Basepath</p>
+<div class="pgStandard"><input class="large-input" type="text" id="pgbasepathsyn" name="pgbasepathsyn" value="basepath = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-323px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="basepath = " hidden/></div>
+</div>
+<hr class="hrl" size="1" noshade="">
+<div id="nzbcheck" style="display:block;">
+<h1>NZBCheck</h1>
+<p>Do not skip failed NZBs</p>
+<div class="pgStandard"><input type="text" id="pgskip_failed" name="pgskip_failed" value="skip_failed = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="skip_failed = true">true</option>
+      <option value="skip_failed = false">false</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Maximum missing failed segments</p>
+<div class="pgStandard"><input type="text" id="pgmax_missing_segments_percent" name="pgmax_missing_segments_percent" value="max_missing_segments_percent = 1" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="max_missing_segments_percent = 1">1</option>
+      <option value="max_missing_segments_percent = 2">2</option>
+      <option value="max_missing_segments_percent = 5">5</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Maximum missing failed files</p>
+<div class="pgStandard"><input type="text" id="pgmax_missing_files" name="pgmax_missing_files" value="max_missing_files = 1" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="max_missing_files = 1">1</option>
+      <option value="max_missing_files = 2">2</option>
+      <option value="max_missing_files = 3">3</option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Always use all search engines to find the best NZB</p>
+<div class="pgStandard"><input type="text" id="pgbest_nzb" name="pgbest_nzb" value="best_nzb = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="best_nzb = true">true</option>
+      <option value="best_nzb = false">false</option>
+     </select>
+     </div>
+</div>
+<hr class="hrl" size="1" noshade="">
+<div id="categories" style="display:block;">
+<h1>CATEGORIZER</h1>
+<p>Enter your categories and regular expressions here.</p>
+<p>Please remove "#" if you want to use the categories</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgseries" name="pgseries" value="# series = (s\d+e\d+|s\d+ complete)"></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgmovies" name="pgmovies" value="# movies = (x264|xvid|bluray|720p|1080p|untouched)"></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc" name="pgetc" value="# Add category"></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Add category"></div>
+<div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Add category"></div>
+</div>
+<hr class="hrl" size="1" noshade="">
+<div id="searchengines" style="display:block;">
+<h1>SEARCHENGINES</h1>
+<p style="margin-bottom:5px;">Set values between 0 and 9: 0 = disabled, 1-9 = enabled, 1-9 also represents the order in which the search engines are used. Multiple servers with the same order number are allowed.</p>
+<p>Activate NZBIndex</p>
+<div class="pgStandard"><input type="text" id="pgnzbindex" name="pgnzbindex" value="nzbindex = 1" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="nzbindex =  1"> 1 </option>
+      <option value="nzbindex =  2"> 2 </option>
+      <option value="nzbindex =  3"> 3 </option>
+      <option value="nzbindex =  4"> 4 </option>
+      <option value="nzbindex =  5"> 5 </option>
+      <option value="nzbindex =  0"> 0 </option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade="">
+<p>Activate NZBKing</p>
+<div class="pgStandard"><input type="text" id="pgnzbking" name="pgnzbking" value="nzbking = 2" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="nzbking =  2"> 2 </option>
+      <option value="nzbking =  1"> 1</option>
+      <option value="nzbking =  3"> 3 </option>
+      <option value="nzbking =  4"> 4 </option>
+      <option value="nzbking =  5"> 5 </option>
+      <option value="nzbking =  0"> 0 </option>
+     </select></div>
+<hr class="hrl" size="1" noshade="">
+<p>Activate Binsearch</p>
+<div class="pgStandard"><input type="text" id="pgbinsearch" name="pgbinsearch" value="binsearch = 3" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="binsearch =  3"> 3 </option>
+      <option value="binsearch =  1"> 1 </option>
+      <option value="binsearch =  2"> 2 </option>
+      <option value="binsearch =  4"> 4 </option>
+      <option value="binsearch =  5"> 5 </option>
+      <option value="binsearch =  0"> 0 </option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade>
+<p>Enable easynews search engine<br>(Easynews Search settings required)</p>
+<div class="pgStandard"><input type="text" id="pgeasynews" name="pgeasynews" value="easynews = 4" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="easynews =  4"> 4 </option>
+      <option value="easynews =  1"> 1 </option>
+      <option value="easynews =  2"> 2 </option>
+      <option value="easynews =  3"> 3 </option>
+      <option value="easynews =  5"> 5 </option>
+      <option value="easynews =  0"> 0 </option>
+     </select>
+     </div>
+<hr class="hrl" size="1" noshade>
+<p>Enable NZB direct search <br>(NZB direct search settings required)</p>
+<div class="pgStandard"><input type="text" id="pgdirectsearch" name="pgdirectsearch" value="directsearch = 5" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="directsearch = 5"> 5 </option>
+      <option value="directsearch = 1"> 1 </option>
+      <option value="directsearch = 2"> 2 </option>
+      <option value="directsearch = 3"> 3 </option>
+      <option value="diectsearch =  4"> 4 </option>
+      <option value="directsearch = 0"> 0 </option>
+     </select>
+    </div>
+ </div>
+<hr class="hrl" size="1" noshade>
+</div>
+<div class="column">
+<div id="easynews" style="display:block;">
+<h1>EASYNEWS SEARCH</h1>
+<p style="margin-bottom:5px;">This section defines the settings for Easynews search engine. The Easynews search engine must be activated<br>in the <a class="cat" href="#searchengines">SEARCHENGINES</a>.</p>
+<p>Your Easynews username</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgeasyusername" name="pgeasyusername" value="username = &quot;&quot;"readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="username = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Your Easynews password</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgeasypassword" name="pgeasypassword" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"/><input type="text" value="password = " hidden/></div>
+<hr class="hrr" size="1" noshade>
+<p>Use the keyword or subject search. If set to "true", only the subjects are searched, which may result in fewer incorrect results but will not find hidden uploads.</p>
+<div class="pgStandard"><input type="text" id="pgsubjectonly" name="pgsubjectonly" value="subject_search_only = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="subject_search_only = false">false</option>
+      <option value="subject_search_only = true">true</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p>Use the most recent or oldest result. If set to "true", the oldest result is used instead of the most recent one.</p>
+<div class="pgStandard"><input type="text" id="pgoldestresult" name="pgoldestresult" value="oldest_result = false" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="oldest_result = false">false</option>
+      <option value="oldest_result = true">true</option>
+     </select>
+     </div>
+ </div>
+<hr class="hrr" size="1" noshade>
+<div id="directsearch" style="display:block;">
+<h1>NZB-DIRECTSEARCH</h1>
+<p>Hostname of your Usenet server</p>
+<div class="pgStandard"><input type="text" id="pghostdir" name="pghostdir" value="host = &quot;&quot;" readonly/><input class="small-input" type="text" id="comb" value="&quot;&quot;" style="margin-left:-201px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="host = " hidden/></div>
+<hr class="hrr" size="1" noshade="">
+<p>Port number of your Usenet server</p>
+<div class="pgStandard"><input type="text" id="pgportdir" name="pgportdir" value="port = 563" readonly>
+     <select id="port" class="select" onchange="changeValueAndSSL(event);">
+      <option value="port = 563">563 (ssl)</option>
+      <option value="port = 443">443 (ssl)</option>
+      <option value="port = 119">119</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade="">
+<p>Use SSL</p>
+<div class="pgStandard"><input type="text" id="pgssldir" name="pgssldir" value="ssl = true" readonly/>
+     <select id="ssl" class="select" onchange="changeValueAndPort(event);">
+      <option value="ssl = true">true</option>
+      <option value="ssl = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade="">
+<p>Username of your Usenet account</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgusername" name="pgusername" value="username = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-318px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="username = " hidden/></div>
+<hr class="hrr" size="1" noshade="">
+<p>Your Usenet account password</p>
+<div class="pgStandard"><input type="text" class="large-input" id="pgpassworddir" name="pgpassworddir" value="password = &quot;&quot;" readonly/><input class="medium-input" id="comb" value="&quot;&quot;" style="margin-left:-319px;" oninput="combine(event);" onfocus="setCursor();"><input type="text" value="password = " hidden/></div>
+<hr class="hrr" size="1" noshade="">
+<p>Experiment with the values using the sliders to determine the best search speed.
+However, the default settings should work good for most conditions.</p>
+<hr class="hrr" size="1" noshade="">
+<p>Maximum allowed connections to your Usenet server <br>(default = 20)</p>
+<div class="pgStandard"><input type="text" id="pgconnections" name="pgconnections" value="connections = 20" readonly/>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="1" min="5" max="100" value="20" class="slider" oninput="combine(event);"/>
+    <input type="text" value="connections = " hidden/>
+<!-- Comment this in for manual parameter input :
+     <input id="comb" value="20" style="margin-left:-165px; width:130px;" oninput="combine(event);"/>
+     <input type="text" value="connections = " hidden/> -->
+</div>
+<hr class="hrr" size="1" noshade="">
+<p>Number of hours to search back from the specified date<br>(default = 12)</p>
+<div class="pgStandard"><input type="text" id="pghours" name="pghours" value="hours = 12" readonly/>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="1" min="2" max="24" value="12" class="slider" oninput="combine(event);"/>
+    <input type="text" value="hours = " hidden/>
+<!-- Comment this in for manual parameter input :
+     <input id="comb" value="20" style="margin-left:-200px; width:140px;" oninput="combine(event);"/>
+     <input type="text" value="hours = " hidden/>  -->
+</div>
+<hr class="hrr" size="1" noshade="">
+<p>Number of hours to search forward from the specified date<br>(default = 12)</p>
+<div class="pgStandard"><input type="text" id="pgforward_hours" name="pgforward_hours" value="forward_hours = 12" readonly/>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="1" min="2" max="24" value="12" class="slider" oninput="combine(event);"/>
+    <input type="text" value="forward_hours = " hidden/>
+<!-- Comment this in for manual parameter input :
+     <input id="comb" value="20" style="margin-left:-200px; width:140px;" oninput="combine(event);"/>
+     <input type="text" value="hours = " hidden/>  -->
+</div>
+<hr class="hrr" size="1" noshade="">
+<p>Number of items to load per scan (default = 50000)</p>
+<div class="pgStandard"><input type="text" id="pgstep" name="pgstep" value="step = 50000" readonly/>
+<!-- Comment this out for manual parameter input : -->
+    <input type="range" step="1000" min="20000" max="100000" value="50000" class="slider" oninput="combine(event);"/>
+    <input type="text" value="step = " hidden/>
+<!-- Comment this in for manual parameter input :
+    <input class="small-input" id="comb" value="20000" style="margin-left:-201px;" oninput="combine(event);"/>
+    <input type="text" value="step = " hidden/> -->
+</div>
+<hr class="hrr" size="1" noshade="">
+<p>Defines the number of seconds after which an overview request<br>is considered stalled. (default = 5).</p>
+<div class="pgStandard"><input type="text" id="pgovtimeout" name="pgovtimeout" value="overview_timeout = 5" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="overview_timeout = 5"> 5 </option>
+      <option value="overview_timeout = 8"> 8 </option>
+      <option value="overview_timeout = 10"> 10 </option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p>Defines the number of retry attempts when an overview request<br>is stalled (default = 3)</p>
+<div class="pgStandard"><input type="text" id="pgovretries" name="pgovretries" value="overview_retries = 3" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="overview_retries = 3"> 3 </option>
+      <option value="overview_retries = 4"> 4 </option>
+      <option value="overview_retries = 5"> 5 </option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p>Skip direct search if best_nzb is used and a good NZB file has already been found</p>
+<div class="pgStandard"><input type="text" id="pgskipdir" name="pgskipdir" value="skip = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="skip = true">true</option>
+      <option value="skip = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade="">
+<p>Only search in the first group if multiple groups are specified. In fact, searching in multiple groups is useless.</p>
+<div class="pgStandard"><input type="text" id="pgfirst_group_only" name="pgfirst_group_only" value="first_group_only = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="first_group_only = true">true</option>
+      <option value="first_group_only = false">false</option>
+     </select>
+     </div>
+     <hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">Use ANSI codes to display the progress bar. The use of ANSI codes ensures a smoother display and reduces flickering, but may not be supported by all terminals..</p>
+<div class="pgStandard"><input type="text" id="pgansycodes" name="pgansycodes" value="use_ansi_codes = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="use_ansi_codes = true">true</option>
+      <option value="use_ansi_codes = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">Display the message counter in the progress bar during the message scan.</p>
+<div class="pgStandard"><input type="text" id="pgshowcounter" name="pgshowcounter" value="show_counter = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="show_counter = true">true</option>
+      <option value="show_counter = false">false</option>
+     </select>
+     </div>
+<hr class="hrr" size="1" noshade>
+<p style="margin-bottom:5px;">Limit the direct search to one instance at a time. Limiting to one instance at a time prevents "too many connection" errors if multiple searches are started simultaneously.</p>
+<div class="pgStandard"><input type="text" id="pginstance" name="pginstance" value="one_instance_only = true" readonly/>
+     <select class="select" onchange="changeValue(event);">
+      <option value="one_instance_only = true">true</option>
+      <option value="one_instance_only = false">false</option>
+     </select>
+     </div>
+  </div>
+</form>
+</div>
+<br style="clear:both;">
+<div class="buttons" id="buttons" align="center">
+<a class="button tooltip" onclick="getData()">Create</a> <i class="arrow"></i>
+ <a class="button" onclick="safeConfig()">Save</a> <i class="arrow"></i>
+ <a class="button" onclick="clearConfig()">Reset</a>
+</div>
+<div style="display:none;" class="config" id="conf">
+<div style="display:none;" class="pgconfig" id="pgconfig"></div>
+<span class="button toggleconf" onclick="toggleConf();" title="Window / below inputs">Below</span>
+<span class="button conf" onclick="closeConfig();" title="Doesn't delete config!">Close</span>
+</div>
+<i class="totop" onclick="scrollToTop();"></i>
+</div>
+<script src="monkey-go-gui-conf.js"></script>
+</body>
+</html>
