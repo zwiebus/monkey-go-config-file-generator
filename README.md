@@ -15,6 +15,7 @@ HTML GUI for creating and saving the <a href="https://github.com/Tensai75/nzb-mo
 </ul>
 
 ![Output](/src/mgcfg.png)
+![Output](/src/templatewindow.png)
 
 ## Credits NZB Monkey GO: Tensai75
 <a href="https://github.com/Tensai75/nzb-monkey-go">nzb-monkey-go</a>
