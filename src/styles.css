@@ -76,15 +76,16 @@ body {
   font-family: Monospace,Consolas,Menlo,Monaco,DroidSansMono,Arial;
   background: #313239;
 }
-
 .configbelow {
   position: relative;
   font-size: 11px;
+  height: 100%!Important;
+  width:100%!Important
 }
 .toggleconf {
   position: relative;
   float: right;
-  margin: -35px 125px 0;
+  margin: -35px 105px 0; /* German: -35px 135px 0; */
   z-index: 200
 }
 p {
@@ -139,7 +140,7 @@ h2 {
 .conf {
   position:relative;
   float: right;
-  margin: -35px 30px 0;
+  margin: -35px 40px 0;
   z-index: 200
 }
 .pgconfig {
