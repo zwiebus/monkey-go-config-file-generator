@@ -13,8 +13,9 @@
   .column {
     width: 100%!important;
   }
-  #pgconfig, #conf {
-    width: 95%!Important;
+  .pgconfig, .config {
+    max-width:95%!Important;
+    min-width:95%!Important;
   }
   .hrl {
     margin-right: -10px!important;
