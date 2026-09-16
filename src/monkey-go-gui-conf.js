@@ -12,6 +12,7 @@ const dropdown = document.getElementById("select_target");
    let execute = document.getElementById("pgEXECUTE");
      if(execute.value.includes('EXECUTE')) {
          executed.style.display = 'block';
+       //executed.style.cssText = 'display: block; background: rgb(85, 91, 101); width: max-content; padding:3px; margin: -3px;';
          nzbget.style.display = 'none';
          synologydls.style.display = 'none';
          sabnzbd.style.display = 'none';
@@ -33,14 +34,12 @@ const dropdown = document.getElementById("select_target");
       }
      markChangedValues();
 });
-
 function changeValue(event) {
    let selectElement = event.target;
    let value = selectElement.value;
    event.target.previousElementSibling.value = value;
    markChangedValues();
 }
-
 function combine(event) {
    let inputElement = event.target;
    let value = inputElement.value;
@@ -48,7 +47,6 @@ function combine(event) {
    event.target.previousElementSibling.value = value2 + value;
    markChangedValues();
 }
-
 function nossl() {
   let nossl = document.getElementById("pgportdir");
    if(nossl.value.includes('119')) {
@@ -59,7 +57,6 @@ function nossl() {
    document.getElementById("ssl").value = 'ssl = true';
    }
 }
-
 function ssltrue() {
   let ssltrue = document.getElementById("pgssldir");
    if(ssltrue.value.includes('false')) {
@@ -70,19 +67,16 @@ function ssltrue() {
    document.getElementById("port").value = 'port = 563' || 'port = 443';
    }
 }
-
 function changeValueAndSSL(event) {
    changeValue(event);
    nossl();
    markChangedValues();
 }
-
 function changeValueAndPort(event) {
    changeValue(event);
    ssltrue();
    markChangedValues();
 }
-
 function getData() {
   let pg = {};
   let inputs = document.forms['pg'];
@@ -100,7 +94,6 @@ function getData() {
   document.getElementById('pgconfig').style.display = 'block';
   document.getElementById('conf').style.display = 'block';
 }
-
 function safeConfig() {
   const values = document.getElementById("pgconfig").innerText;
   let blob = new Blob([values], {type: "text/plain",endings:'native'});
@@ -110,6 +103,8 @@ function safeConfig() {
     link.download = "config.txt";
    } else if (navigator.appVersion.indexOf('X11') != -1) {
     link.download = "nzb-monkey-go.conf";
+   } else if (navigator.appVersion.indexOf('Wayland') != -1) {
+    link.download = "nzb-monkey-go.conf";
    } else if (navigator.appVersion.indexOf('Linux') != -1) {
     link.download = "nzb-monkey-go.conf";
    } else {
@@ -117,20 +112,16 @@ function safeConfig() {
    }
   link.click();
 }
-
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
-
 function scrollToBottom() {
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
-
 function closeConfig() {
   document.getElementById('pgconfig').style.display = 'none';
   document.getElementById('conf').style.display = 'none';
 }
-
 function clearConfig() {
   document.getElementById('pgconfig').innerText = '';
   document.getElementById('pg').reset();
@@ -147,7 +138,6 @@ function clearConfig() {
   scrollToTop();
   markChangedValues();
 }
-
 function toggleConf() {
   let element = document.getElementById('pgconfig');
   let conf = document.getElementById("conf");
@@ -157,17 +147,16 @@ function toggleConf() {
     element.classList.add("configbelow");
     conf.classList.remove("config");
     conf.classList.add("configbelow");
-    button.innerText = 'Window'; 
+    button.innerText = 'Fenster';
     scrollToBottom();
    } else  {
     element.classList.add("pgconfig");
     element.classList.remove("configbelow");
     conf.classList.add("config");
     conf.classList.remove("configbelow");
-    button.innerText = 'Below';  
+    button.innerText = 'Unterhalb';
    }
 }
-
 function changeStyle() {
   let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow, .totop,.tobottom, #pgconfig');
   let changeStyle = document.querySelector("#changestyle");
@@ -184,7 +173,6 @@ function changeStyle() {
     }
    markChangedValues();
 }
-
 function setCursor(){
  let inputField = document.querySelectorAll('#comb');
  let element = document.querySelector('.container');
@@ -205,7 +193,6 @@ function setCursor(){
   }
  }
 }
-
 function markChangedValues() {
  let elements = document.querySelectorAll('input');
   for (let i = 0; i < elements.length; i++) {
@@ -215,7 +202,7 @@ function markChangedValues() {
     } else if (elements[i].value == elements[i].defaultValue){
      elements[i].style.setProperty('color' , "#1F1F1F" , 'important');
     }
-   } else {
+    } else {
     if (elements[i].value != elements[i].defaultValue) {
      elements[i].style.color = "#7DEAEA";
     } else if (elements[i].value == elements[i].defaultValue){
