@@ -11,17 +11,18 @@
 <link rel="shortcut icon" href="nzb-monkey-go.ico">
 <link rel="stylesheet" href="styles.css"/>
 <title>Monkey-Go-conf-GUI</title>
-<script src="template3.0.js"></script> 
+<script src="template3.0.js"></script>
 </head>
 <body>
 <div class="container">
 <a class="monkey" href="https://github.com/Tensai75/nzb-monkey-go" target="_blank" title="Nzb-monkey-Go"></a>
 <a class="dl tobottom" onclick="scrollToBottom();"></a>
 <a class="dl sun" id="changestyle" onclick="changeStyle()"></a>
-<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" target="_blank" title="check for new version" target="_blank">Version 2.0.33c</a>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" target="_blank" title="Check for new version" target="_blank">Version 2.0.33c</a>
 <a href="https://github.com/Tensai75/nzb-monkey-go/wiki/" class="dl button" title="Nzb-monkey-Go Wiki" target="_blank">Online Help</a>
 <h2>Create Nzb-Monkey-Go config file</h2>
 <p>To create only NZB files and save them in a folder, simply specify the nzbsavepath <font color="#FF0000">&#9733;</font> under <span class="cat">EXECUTE</span>. For the most successful search, however, you should definitely configure <a class="cat" href="#directsearch">DIRECTSEARCH</a>. Otherwise, select the values required for your setup. For input fields without selections and with quotation marks, the values or must always be enclosed in "|".</p>
+<hr class="hrt" size="1" noshade>
 <form id="pg" name="pg">
 <div class="column">
 <div id="general">
@@ -537,8 +538,8 @@ However, the default settings should work good for most conditions.</p>
 </div>
 <div style="display:none;" class="config" id="conf">
 <div style="display:none;" class="pgconfig" id="pgconfig"></div>
-<span class="button toggleconf" onclick="toggleConf();" title="Window / below inputs">Below</span>
-<span class="button conf" onclick="closeConfig();" title="Doesn't delete config!">Close</span>
+<a class="button toggleconf" onclick="toggleConf();" title="Window / below inputs">Below</a>
+<a class="button conf" onclick="closeConfig();" title="Doesn't delete config!">Close</a>
 </div>
 <a class="totop" onclick="scrollToTop();"></a>
 </div>
