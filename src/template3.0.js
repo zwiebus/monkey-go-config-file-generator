@@ -109,6 +109,13 @@ let template = {};
 %pgetc%
 %pgetc2%
 %pgetc3%
+%pgetc4%
+%pgetc5%
+%pgetc6%
+%pgetc7%
+%pgetc8%
+%pgetc9%
+%pgetc10%
 
 [SEARCHENGINES]
 # Set values between 0-9
