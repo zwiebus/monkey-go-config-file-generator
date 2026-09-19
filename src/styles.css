@@ -344,3 +344,6 @@ input:focus {
   width: 9px;
   cursor: pointer;
 }
+.categories > div {
+  margin-bottom:5px;
+}
