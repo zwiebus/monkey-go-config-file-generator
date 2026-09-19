@@ -212,3 +212,12 @@ function markChangedValues() {
    setCursor();
   }
 }
+function morecat() {
+     let x = document.querySelector(".morecat");
+      if (x.style.display === "none") {
+       x.style.display = "block";
+       x.classList.add("categories");
+      } else {
+       x.style.display = "none";
+     }
+}
