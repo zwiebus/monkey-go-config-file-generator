@@ -209,16 +209,16 @@ let template = {};
 }
 .light-mode {color:#000!Important;background:#F5F5F5!Important;border-color:#000!Important;}
 .light-mode input {color:#1F1F1F!Important;background:#fff!Important;}
-.light-mode input:focus {border-color: red!Important;}
+.light-mode input:focus {border-color:red!Important;}
 .light-mode .slider {background:transparent!Important;}
 .light-mode .button {color:#00009F!Important;background:#D0F1F3!Important;}
 .light-mode .button:hover {background:#A5DAED!Important;}
 .light-mode .button:active {background:#F2FBFA!Important;}
 .light-mode #pgconfig {background:#F5F5F6!Important;}
 .light-mode h1, .light-mode h2, .light-mode .cat {color:#00009F!Important;}
-body {color:#F1F2FF;font-family:monospace,Consolas,Menlo,Monaco,DroidSansMono,Arial;background:#313239}
+body {color:#F1F2FF;font-family:monospace,Consolas,Menlo,Monaco,DroidSansMono,Arial;background:#313239;}
 .configbelow {position:relative;font-size:11px;height:100%!Important;width:100%!Important}
-.toggleconf {position:relative;float:right;margin:-35px 135px 0;z-index:200}
+.toggleconf {position:relative;float:right;margin:-35px 135px 0;z-index:200;}
 p {margin:2px 0;}
 a {text-decoration:none;}
 .container {position:relative;content: "";display: table;clear: both;font-size:13px;line-height:16px;background:#454750;width:98%;max-width:900px;margin:10px auto;padding:10px;border:1px solid #DEE1F7;border-radius:5px;}
@@ -227,7 +227,7 @@ h1 {font-size:14px;margin:0 6px;color:#43d1ff;}
 h2 {color:#43d1ff;font-size:16px;margin-left:35px;margin-top:4px;}
 .select {margin-left:5px;min-width:75px;}
 .config {position:fixed;top:20px;left:50%;transform:translateX(-50%);height:90%;z-index:100;}
-.conf {position:relative;float:right;margin:-35px 40px 0;z-index:200}
+.conf {position:relative;float:right;margin:-35px 40px 0;z-index:200;}
 .pgconfig {position:relative;min-height:50%;min-width:500px;max-height:90%;max-width:700px;background:#454755;font-size:11px;padding:10px;border:1px solid #DEE1F7;border-radius:5px;resize:both;overflow:auto;z-index:50;}
 input {color:#F1F2FF;background:#4d555d;padding:0 6px 2px;border: 1px solid #DEE1F7;border-radius:3px;width:230px;overflow-x:hidden;}
 input:focus{outline:none;border-color:#43d1ff;}
@@ -241,6 +241,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 .button:active {background:#7C37AD;border-color:#535a62;}
 .buttons {position:relative;margin-top:20px;z-index:60;}
 .cat {color:#43d1ff;}
+a.cat:hover {color:#59B9FF;}
 .dl {position:relative;float:right;margin-right:10px;}
 .hrl {margin-left:-10px;margin-right:20px;}
 .hrr {margin-right:-10px;}
@@ -264,7 +265,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <a class="monkey" href="https://github.com/Tensai75/nzb-monkey-go" target="_blank" title="Nzb-monkey-Go"></a>
 <a class="dl tobottom" onclick="scrollToBottom();"></a>
 <a class="dl sun" id="changestyle" onclick="changeStyle()"></a>
-<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" target="_blank" title="Webseite auf neue Version prüfen" target="_blank">Version 2.0.33d</a>
+<a class="dl button" href="https://github.com/zwiebus/monkey-go-config-file-generator/releases/" target="_blank" title="Webseite auf neue Version prüfen" target="_blank">Version 2.0.33e</a>
 <a href="https://github.com/Tensai75/nzb-monkey-go/wiki/" class="dl button" title="Nzb-monkey-Go Wiki" target="_blank">Online Hilfe (englisch)</a>
 <h2>Nzb-Monkey-Go Config-Datei erstellen</h2>
 <p>Um nur NZB-Dateien zu erstellen und in einen Ordner zu speichern muss lediglich der nzbsavepath <font color="#FF0000">&#9733;</font> unter <span class="cat">EXECUTE</span> angegeben werden. Für eine möglichst erfolgreiche Suche sollte man aber auf jeden Fall die <a class="cat" href="#directsearch">DIREKTSUCHE</a> konfigurieren. Ansonsten wähle die für dein Setup benötigten Werte aus. Bei Eingabefeldern ohne Auswahl und mit Anführungszeichen müssen die Angaben immer zwischen diese eingefügt werden "|".</p>
@@ -288,7 +289,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <p>Weitere Einstellungen dazu findest du unter <a class="cat" href="#categories">KATEGORISIERER</a></p>
   <div class="pgStandard">
    <input type="text" id ="pgcategorize" name="pgcategorize" value="categorize = &quot;off&quot;" readonly/>
-     <select class="select" id="select_target_cat" onchange="changeValue(event);">
+     <select class="select" onchange="changeValue(event);">
       <option value="categorize = &quot;off&quot;">off</option>
       <option value="categorize = &quot;auto&quot;">auto</option>
       <option value="categorize = &quot;manual&quot;">manual</option>
@@ -551,7 +552,7 @@ input:focus{outline:none;border-color:#43d1ff;}
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc2" name="pgetc2" value="# Kategorie hinzufügen"/></div>
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc3" name="pgetc3" value="# Kategorie hinzufügen"/></div>
 <a class="cat" style="line-height:20px;cursor:pointer;" onclick="morecat();">Mehr Kategorien</a>
-<div class="morecat" style="display:none">
+<div class="morecat categories" style="display:none">
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc4" name="pgetc4" value="# Kategorie hinzufügen"/></div>
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc5" name="pgetc5" value="# Kategorie hinzufügen"/></div>
 <div class="pgStandard"><input type="text" class="large-input" id="pgetc6" name="pgetc6" value="# Kategorie hinzufügen"/></div>
@@ -809,7 +810,6 @@ const dropdown = document.getElementById("select_target");
    let execute = document.getElementById("pgEXECUTE");
      if(execute.value.includes('EXECUTE')) {
          executed.style.display = 'block';
-       //executed.style.cssText = 'display: block; background: rgb(85, 91, 101); width: max-content; padding:3px; margin: -3px;';
          nzbget.style.display = 'none';
          synologydls.style.display = 'none';
          sabnzbd.style.display = 'none';
@@ -885,6 +885,9 @@ function getData() {
    pg['pgconfig'] = template[template.type];
     for(let key in pg) {
      pattern = new RegExp("%" + key + "%", "gi");
+     if(pg[key].includes('Kategorie')) {
+      pg[key] = '# Add category';
+     }
      pg['pgconfig'] = pg['pgconfig'].replace(pattern, pg[key]);
     }
   document.getElementById('pgconfig').innerText = pg['pgconfig'];
@@ -1013,7 +1016,6 @@ function morecat() {
      let x = document.querySelector(".morecat");
       if (x.style.display === "none") {
        x.style.display = "block";
-       x.classList.add("categories");
       } else {
        x.style.display = "none";
      }
