@@ -214,14 +214,11 @@ input:focus {
   margin-top: 20px;
   z-index: 60;
 }
-#pgseries,
-#pgmovies,
-#pgetc,
-#pgetc2 {
-  margin-bottom: 5px;
-}
 .cat {
   color: #43d1ff;
+}
+a.cat:hover {
+  color:#59B9FF;
 }
 .dl {
   position: relative;
