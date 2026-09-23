@@ -76,6 +76,9 @@
 .light-mode .cat {
   color: #00009f !important;
 }
+.light-mode a.cat:hover {
+  color:#0070C0!Important;
+}
 body {
   color: #f1f2ff;
   font-family: monospace, Consolas, Menlo, Monaco, DroidSansMono, Arial;
