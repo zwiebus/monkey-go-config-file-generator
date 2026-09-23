@@ -158,7 +158,7 @@ function toggleConf() {
    }
 }
 function changeStyle() {
-  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow, .totop,.tobottom, #pgconfig');
+  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, a.cat, .help, .arrow, .totop,.tobottom, #pgconfig');
   let changeStyle = document.querySelector("#changestyle");
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
@@ -209,7 +209,6 @@ function markChangedValues() {
      elements[i].style.color = "#F1F2FF";
     }
    }
-   setCursor();
   }
 }
 function morecat() {
