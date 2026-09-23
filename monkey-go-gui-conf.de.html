@@ -216,6 +216,7 @@ let template = {};
 .light-mode .button:active {background:#F2FBFA!Important;}
 .light-mode #pgconfig {background:#F5F5F6!Important;}
 .light-mode h1, .light-mode h2, .light-mode .cat {color:#00009F!Important;}
+.light-mode a.cat:hover {color:#0070C0!Important;}
 body {color:#F1F2FF;font-family:monospace,Consolas,Menlo,Monaco,DroidSansMono,Arial;background:#313239;}
 .configbelow {position:relative;font-size:11px;height:100%!Important;width:100%!Important}
 .toggleconf {position:relative;float:right;margin:-35px 135px 0;z-index:200;}
@@ -958,7 +959,7 @@ function toggleConf() {
    }
 }
 function changeStyle() {
-  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, .help, .arrow, .totop,.tobottom, #pgconfig');
+  let elements = document.querySelectorAll('body, .container , .slider , input , h1 , h2, .cat, a.cat, .help, .arrow, .totop,.tobottom, #pgconfig');
   let changeStyle = document.querySelector("#changestyle");
    for (let i = 0; i < elements.length; i++) {
     elements[i].classList.toggle("light-mode");
@@ -1009,7 +1010,6 @@ function markChangedValues() {
      elements[i].style.color = "#F1F2FF";
     }
    }
-   setCursor();
   }
 }
 function morecat() {
